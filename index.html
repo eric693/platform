@@ -279,6 +279,8 @@ async function initData() {
   } else {
     cards = JSON.parse(localStorage.getItem(CARDS_KEY) || 'null') || DEFAULT_CARDS;
   }
+  // normalize: support both 'pw' (old) and 'password' (new) field
+  cards = cards.map(c => ({ ...c, password: c.password ?? c.pw ?? '' }));
   render();
 }
 
@@ -368,6 +370,7 @@ document.getElementById('pwOv').addEventListener('click', e => { if (e.target.id
 window.addEventListener('storage', e => {
   if (!USE_SUPABASE && e.key === CARDS_KEY) {
     cards = JSON.parse(localStorage.getItem(CARDS_KEY) || 'null') || DEFAULT_CARDS;
+    cards = cards.map(c => ({ ...c, password: c.password ?? c.pw ?? '' }));
     render();
   }
 });
