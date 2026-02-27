@@ -355,7 +355,11 @@ function closePw() { document.getElementById('pwOv').classList.remove('show'); p
 function go() {
   const v = document.getElementById('pwI').value;
   if (v === pending?.password) {
-    closePw(); window.open(pending.url, '_blank');
+    const url = pending.url;
+    closePw();
+    const a = document.createElement('a');
+    a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
   } else {
     document.getElementById('pwI').classList.add('err');
     document.getElementById('pwE').style.display = 'block';
