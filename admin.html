@@ -307,6 +307,8 @@ textarea{resize:vertical;min-height:86px;line-height:1.6}
                 <option value="course" data-i18n="type_course">Course</option>
               </select>
             </div>
+            <div class="field"><label data-i18n="field_price">售價</label><input type="text" id="fPrice" placeholder="e.g. 1200"/></div>
+            <div class="field"><label data-i18n="field_currency">幣別</label><select id="fCurrency"><option value="TWD">TWD</option><option value="USD">USD</option><option value="JPY">JPY</option><option value="FREE">免費</option></select></div>
             <div class="field"><label data-i18n="field_tags">Tags</label><input type="text" id="fTags"/></div>
             <div class="field form-full"><label data-i18n="field_desc">Description</label><textarea id="fDesc"></textarea></div>
           </div>
@@ -418,6 +420,8 @@ textarea{resize:vertical;min-height:86px;line-height:1.6}
           </div>
         </div>
         <div class="field"><label data-i18n="field_pw">Password</label><input type="text" id="ePw"/></div>
+        <div class="field"><label data-i18n="field_price">Price</label><input type="text" id="ePrice" placeholder="e.g. 1200"/></div>
+        <div class="field"><label data-i18n="field_currency">Currency</label><select id="eCurrency"><option value="TWD">TWD</option><option value="USD">USD</option><option value="JPY">JPY</option><option value="FREE">免費/Free</option></select></div>
         <div class="field"><label data-i18n="field_tags">Tags</label><input type="text" id="eTags"/></div>
         <div class="field form-full"><label data-i18n="field_desc">Description</label><textarea id="eDesc"></textarea></div>
       </div>
@@ -467,7 +471,7 @@ const i18n = {
     panel_basic:'基本資訊',panel_link:'連結與縮圖',panel_access:'存取控制',
     field_title:'標題 *',field_type:'類型 *',field_tags:'標籤（逗號分隔）',
     field_desc:'說明',field_url:'目標網址 *',field_thumb:'縮圖',
-    field_pw:'存取密碼（可選）',pw_hint:'設定後，使用者需輸入密碼才能前往目標頁面。',
+    field_price:'售價',field_currency:'幣別',price_hint:'留空表示免費。',field_pw:'存取密碼（可選）',pw_hint:'設定後，使用者需輸入密碼才能前往目標頁面。',
     upload_click:'點擊選擇照片',upload_or:'，或拖曳至此',upload_click_new:'點擊上傳新圖片',
     or_url:'或填入圖片網址',
     type_product:'產品',type_course:'課程',
@@ -505,7 +509,7 @@ const i18n = {
     panel_basic:'Basic Information',panel_link:'Link & Thumbnail',panel_access:'Access Control',
     field_title:'Title *',field_type:'Type *',field_tags:'Tags (comma separated)',
     field_desc:'Description',field_url:'Destination URL *',field_thumb:'Thumbnail',
-    field_pw:'Access Password (optional)',pw_hint:'If set, users must enter this password before accessing the destination.',
+    field_price:'Price',field_currency:'Currency',price_hint:'Leave empty if free.',field_pw:'Access Password (optional)',pw_hint:'If set, users must enter this password before accessing the destination.',
     upload_click:'Click to choose image',upload_or:' or drag & drop',upload_click_new:'Click to upload new image',
     or_url:'or enter image URL',
     type_product:'Product',type_course:'Course',
@@ -730,7 +734,7 @@ uploadZone.addEventListener('drop', e=>{
 // ── FORM ──
 function resetForm() {
   pendingImg = '';
-  ['fTitle','fUrl','fImgUrl','fPw','fTags','fDesc'].forEach(id=>document.getElementById(id).value='');
+  ['fTitle','fUrl','fImgUrl','fPw','fTags','fDesc','fPrice'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('fImgFile').value = '';
   document.getElementById('fType').value = 'product';
   document.getElementById('fImgPreview').style.display = 'none';
@@ -743,7 +747,7 @@ async function submitForm() {
   const title = document.getElementById('fTitle').value.trim();
   const url = document.getElementById('fUrl').value.trim();
   if (!title||!url) { toast(t('toast_err_required'),'error'); return; }
-  const entry = { title, type:document.getElementById('fType').value, url, img:pendingImg||'', description:document.getElementById('fDesc').value.trim(), tags:document.getElementById('fTags').value.split(',').map(s=>s.trim()).filter(Boolean), password:document.getElementById('fPw').value.trim() };
+  const entry = { title, type:document.getElementById('fType').value, url, img:pendingImg||'', description:document.getElementById('fDesc').value.trim(), tags:document.getElementById('fTags').value.split(',').map(s=>s.trim()).filter(Boolean), price:document.getElementById('fPrice').value.trim(),currency:document.getElementById('fCurrency').value,password:document.getElementById('fPw').value.trim() };
   if (USE_SUPABASE) {
     try {
       const res = await supabaseFetch('entries', { method:'POST', body:JSON.stringify({...entry, tags:entry.tags}) });
@@ -762,7 +766,7 @@ function openEdit(id) {
   editId=id; editPendingImg=c.img||'';
   document.getElementById('eTitle').value=c.title; document.getElementById('eType').value=c.type;
   document.getElementById('eUrl').value=c.url; document.getElementById('eImg').value=c.img&&!c.img.startsWith('data:')?c.img:'';
-  document.getElementById('ePw').value=c.password||''; document.getElementById('eTags').value=(c.tags||[]).join(', ');
+  document.getElementById('ePw').value=c.password||''; document.getElementById('ePrice').value=c.price||''; document.getElementById('eCurrency').value=c.currency||'TWD'; document.getElementById('eTags').value=(c.tags||[]).join(', ');
   document.getElementById('eDesc').value=c.description||'';
   if(c.img){document.getElementById('eImgPreviewImg').src=c.img;document.getElementById('eImgPreview').style.display='inline-block';}
   else document.getElementById('eImgPreview').style.display='none';
@@ -773,7 +777,7 @@ async function saveEdit() {
   const c=cards.find(x=>x.id===editId); if(!c) return;
   const title=document.getElementById('eTitle').value.trim(); const url=document.getElementById('eUrl').value.trim();
   if(!title||!url){toast(t('toast_err_required'),'error');return;}
-  const updates={title,type:document.getElementById('eType').value,url,img:editPendingImg||'',password:document.getElementById('ePw').value.trim(),tags:document.getElementById('eTags').value.split(',').map(s=>s.trim()).filter(Boolean),description:document.getElementById('eDesc').value.trim()};
+  const updates={title,type:document.getElementById('eType').value,url,img:editPendingImg||'',price:document.getElementById('ePrice').value.trim(),currency:document.getElementById('eCurrency').value,password:document.getElementById('ePw').value.trim(),tags:document.getElementById('eTags').value.split(',').map(s=>s.trim()).filter(Boolean),description:document.getElementById('eDesc').value.trim()};
   if(USE_SUPABASE){
     try{await supabaseFetch(`entries?id=eq.${c.id}`,{method:'PATCH',body:JSON.stringify(updates)});}
     catch(e){toast('Error: '+e.message,'error');return;}

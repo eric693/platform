@@ -77,6 +77,9 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .card-foot{display:flex;justify-content:space-between;align-items:center;padding-top:13px;border-top:1px solid var(--border)}
 .tags{display:flex;gap:5px;flex-wrap:wrap}
 .tag{font-family:'Inter',sans-serif;font-size:.58rem;color:var(--txt2);border:1px solid var(--border-d);padding:2px 7px;border-radius:4px;letter-spacing:.03em}
+.card-price{font-family:'Inter',sans-serif;font-size:.82rem;font-weight:700;color:var(--acc);letter-spacing:-.01em;margin-bottom:10px}
+.card-price-free{color:var(--txt2);font-weight:500}
+.card-price-free::after{content:attr(data-free)}
 .card-cta{font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;color:var(--txt2);transition:all .2s;white-space:nowrap;flex-shrink:0}
 .card:hover .card-cta{color:var(--acc);transform:translateX(3px)}
 .empty{grid-column:1/-1;padding:80px 20px;text-align:center;font-size:.82rem;color:var(--txt2)}
@@ -247,9 +250,9 @@ function applyI18n() {
 // ── DATA ──
 const CARDS_KEY = 'et_cards';
 const DEFAULT_CARDS = [
-  {id:1,title:'座位預訂系統',type:'product',url:'https://seat-booking-rlf2.onrender.com',img:'',description:'即時座位管理與線上預訂平台，支援多場地配置與即時同步。',tags:['Node.js','Express','WebSocket'],password:'demo123'},
-  {id:2,title:'Aura App',type:'product',url:'https://aura-v0q3.onrender.com',img:'',description:'智慧氛圍感知應用，打造沉浸式互動體驗。',tags:['React','AI','UX'],password:''},
-  {id:3,title:'Prompt 工程課程',type:'course',url:'https://eric693.github.io/prompt_course/',img:'',description:'從零開始學習 AI Prompt 工程，掌握 ChatGPT 與 Claude 的核心技巧。',tags:['AI','ChatGPT','Claude'],password:'course2024'}
+  {id:1,title:'座位預訂系統',type:'product',url:'https://seat-booking-rlf2.onrender.com',img:'',description:'即時座位管理與線上預訂平台，支援多場地配置與即時同步。',tags:['Node.js','Express','WebSocket'],price:'',currency:'TWD',password:'demo123'},
+  {id:2,title:'Aura App',type:'product',url:'https://aura-v0q3.onrender.com',img:'',description:'智慧氛圍感知應用，打造沉浸式互動體驗。',tags:['React','AI','UX'],price:'',currency:'TWD',password:''},
+  {id:3,title:'Prompt 工程課程',type:'course',url:'https://eric693.github.io/prompt_course/',img:'',description:'從零開始學習 AI Prompt 工程，掌握 ChatGPT 與 Claude 的核心技巧。',tags:['AI','ChatGPT','Claude'],price:'',currency:'TWD',password:'course2024'}
 ];
 
 let cards = [], cur = 'all', pending = null;
@@ -264,7 +267,7 @@ async function loadFromSupabase() {
   return data.map(r => ({
     id: r.id, title: r.title, type: r.type, url: r.url,
     img: r.img || '', description: r.description || '',
-    tags: r.tags || [], password: r.password || ''
+    tags: r.tags || [], password: r.password || '', price: r.price || '', currency: r.currency || 'TWD'
   }));
 }
 
@@ -280,11 +283,24 @@ async function initData() {
     cards = JSON.parse(localStorage.getItem(CARDS_KEY) || 'null') || DEFAULT_CARDS;
   }
   // normalize: support both 'pw' (old) and 'password' (new) field
-  cards = cards.map(c => ({ ...c, password: c.password ?? c.pw ?? '' }));
+  cards = cards.map(c => ({ ...c, password: c.password ?? c.pw ?? '', price: c.price ?? '', currency: c.currency ?? 'TWD' }));
   render();
 }
 
 // ── RENDER ──
+function priceSymbol(cur) {
+  if (cur === 'TWD') return 'NT$';
+  if (cur === 'USD') return 'US$';
+  if (cur === 'JPY') return '¥';
+  return cur + ' ';
+}
+function priceHtml(c) {
+  if (!c.price || c.currency === 'FREE') {
+    return '<div class="card-price card-price-free">' + (lang === 'zh' ? '免費' : 'Free') + '</div>';
+  }
+  return '<div class="card-price">' + priceSymbol(c.currency) + Number(c.price).toLocaleString() + '</div>';
+}
+
 function initials(t) { return t.split(/[\s\-_]+/).map(w=>w[0]||'').join('').toUpperCase().slice(0,3); }
 
 function updateCounts() {
@@ -319,6 +335,7 @@ function render() {
         </div>
         <div class="card-title">${c.title}</div>
         ${c.description ? `<div class="card-desc">${c.description}</div>` : ''}
+        ${(c.price && c.currency !== 'FREE') ? `<div class="card-price">${c.currency === 'TWD' ? 'NT\$' : c.currency === 'USD' ? 'US\$' : c.currency + ' '}${Number(c.price).toLocaleString()}</div>` : (c.currency === 'FREE' || !c.price) ? `<div class="card-price card-price-free" data-i18n-free="1"></div>` : ''}
         <div class="card-foot">
           <div class="tags">${(c.tags||[]).map(tag=>`<span class="tag">${tag}</span>`).join('')}</div>
           <span class="card-cta">${t('card_cta')}</span>
@@ -374,7 +391,7 @@ document.getElementById('pwOv').addEventListener('click', e => { if (e.target.id
 window.addEventListener('storage', e => {
   if (!USE_SUPABASE && e.key === CARDS_KEY) {
     cards = JSON.parse(localStorage.getItem(CARDS_KEY) || 'null') || DEFAULT_CARDS;
-    cards = cards.map(c => ({ ...c, password: c.password ?? c.pw ?? '' }));
+    cards = cards.map(c => ({ ...c, password: c.password ?? c.pw ?? '', price: c.price ?? '', currency: c.currency ?? 'TWD' }));
     render();
   }
 });
