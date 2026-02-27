@@ -8,46 +8,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f2f0eb;
-  --surface:#faf9f6;
-  --sidebar:#1c2b1e;
-  --sidebar-h:#263829;
-  --sidebar-act:#2f4533;
-  --border:#e0ddd6;
-  --border-d:#ccc9c0;
-  --acc:#2d6a4f;
-  --acc-h:#1e4d39;
-  --acc-dim:rgba(45,106,79,.09);
-  --acc-border:rgba(45,106,79,.25);
-  --txt:#1a1f1b;
-  --txt2:#6b7068;
-  --wh:#fff;
-  --danger:#c0392b;
-  --danger-dim:rgba(192,57,43,.07);
-  --success:#2d6a4f;
-  --warn:#b7791f;
+  --bg:#f2f0eb;--surface:#faf9f6;
+  --sidebar:#1c2b1e;--sidebar-h:#263829;--sidebar-act:#2f4533;
+  --border:#e0ddd6;--border-d:#ccc9c0;
+  --acc:#2d6a4f;--acc-h:#1e4d39;--acc-dim:rgba(45,106,79,.09);--acc-border:rgba(45,106,79,.25);
+  --txt:#1a1f1b;--txt2:#6b7068;--wh:#fff;
+  --danger:#c0392b;--danger-dim:rgba(192,57,43,.07);
+  --success:#2d6a4f;--warn:#b7791f;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--txt);font-family:'Noto Sans TC','Inter',sans-serif;min-height:100vh;display:flex}
 
 /* SIDEBAR */
-.sidebar{width:232px;flex-shrink:0;background:var(--sidebar);display:flex;flex-direction:column;min-height:100vh;position:sticky;top:0;height:100vh;overflow:hidden}
-.sb-logo{padding:26px 22px 22px;border-bottom:1px solid rgba(255,255,255,.08)}
-.sb-logo-text{font-family:'Inter',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.12em;color:#fff;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.sidebar{width:232px;flex-shrink:0;background:var(--sidebar);display:flex;flex-direction:column;min-height:100vh;position:sticky;top:0;height:100vh}
+.sb-logo{padding:24px 20px 20px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-logo-text{font-family:'Inter',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.1em;color:#fff;text-transform:uppercase;display:flex;align-items:center;gap:8px}
 .sb-logo-dot{width:6px;height:6px;background:#74c69d;border-radius:50%;flex-shrink:0}
-.sb-badge{margin-top:5px;font-size:.58rem;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase}
-.sb-nav{padding:14px 10px;flex:1}
-.sb-section-label{font-size:.56rem;color:rgba(255,255,255,.28);letter-spacing:.14em;text-transform:uppercase;padding:12px 12px 6px}
+.sb-badge{margin-top:4px;font-size:.58rem;color:rgba(255,255,255,.3);letter-spacing:.08em;text-transform:uppercase}
+.sb-nav{padding:12px 10px;flex:1}
+.sb-section-label{font-size:.56rem;color:rgba(255,255,255,.28);letter-spacing:.12em;text-transform:uppercase;padding:12px 12px 5px}
 .sb-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:7px;cursor:pointer;transition:background .15s;font-size:.84rem;color:rgba(255,255,255,.52);border:none;background:transparent;width:100%;text-align:left}
 .sb-item:hover{background:var(--sidebar-h);color:rgba(255,255,255,.82)}
 .sb-item.active{background:var(--sidebar-act);color:#fff}
 .sb-item-icon{width:16px;height:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .sb-item-icon svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .sb-count{margin-left:auto;font-size:.58rem;background:rgba(255,255,255,.1);color:rgba(255,255,255,.38);padding:1px 7px;border-radius:10px}
-.sb-bottom{padding:14px 10px;border-top:1px solid rgba(255,255,255,.07)}
-.sb-link{display:flex;align-items:center;gap:8px;padding:9px 12px;font-size:.72rem;color:rgba(255,255,255,.32);text-decoration:none;letter-spacing:.04em;border-radius:6px;transition:all .15s;cursor:pointer;border:none;background:transparent;width:100%;text-align:left}
+.sb-bottom{padding:12px 10px;border-top:1px solid rgba(255,255,255,.07)}
+.sb-link{display:flex;align-items:center;gap:8px;padding:9px 12px;font-size:.75rem;color:rgba(255,255,255,.32);text-decoration:none;border-radius:6px;transition:all .15s;cursor:pointer;border:none;background:transparent;width:100%;text-align:left}
 .sb-link:hover{color:rgba(255,255,255,.65);background:var(--sidebar-h)}
 .sb-link svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+
+/* LANG SWITCHER in sidebar */
+.sb-lang{display:flex;margin:8px 10px 0;background:rgba(255,255,255,.07);border-radius:7px;overflow:hidden}
+.sb-lang-btn{flex:1;font-family:'Inter',sans-serif;font-size:.65rem;font-weight:500;padding:7px 4px;background:transparent;border:none;color:rgba(255,255,255,.4);cursor:pointer;transition:all .15s;letter-spacing:.02em}
+.sb-lang-btn.active{background:var(--acc);color:#fff}
+.sb-lang-btn:hover:not(.active){color:rgba(255,255,255,.75)}
 
 /* MAIN */
 .main{flex:1;display:flex;flex-direction:column;min-height:100vh;overflow:hidden}
@@ -68,26 +63,26 @@ body{background:var(--bg);color:var(--txt);font-family:'Noto Sans TC','Inter',sa
 .view{display:none}.view.active{display:block}
 .page-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
 .page-title{font-family:'Inter',sans-serif;font-weight:700;font-size:1.35rem;color:var(--txt);letter-spacing:-.02em}
-.page-sub{font-size:.82rem;color:var(--txt2);margin-top:3px;font-weight:400}
+.page-sub{font-size:.82rem;color:var(--txt2);margin-top:3px}
 
 /* STATS */
 .stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
 .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px}
 .stat-box-n{font-family:'Inter',sans-serif;font-weight:700;font-size:1.7rem;color:var(--txt);letter-spacing:-.03em;line-height:1}
-.stat-box-l{font-size:.6rem;color:var(--txt2);letter-spacing:.08em;text-transform:uppercase;margin-top:5px}
+.stat-box-l{font-size:.6rem;color:var(--txt2);letter-spacing:.07em;text-transform:uppercase;margin-top:5px}
 .stat-box-accent{border-left:3px solid var(--acc)}
 
 /* TABLE */
 .table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .table-head{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.table-head-title{font-size:.65rem;color:var(--txt2);letter-spacing:.08em;text-transform:uppercase}
+.table-head-title{font-size:.65rem;color:var(--txt2);letter-spacing:.07em;text-transform:uppercase}
 .search-box{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--border-d);border-radius:7px;padding:7px 12px}
-.search-box input{background:transparent;border:none;outline:none;font-size:.82rem;color:var(--txt);font-family:'Noto Sans TC',sans-serif;width:180px}
+.search-box input{background:transparent;border:none;outline:none;font-size:.82rem;color:var(--txt);font-family:'Noto Sans TC','Inter',sans-serif;width:170px}
 .search-box input::placeholder{color:var(--txt2)}
 .search-icon{width:12px;height:12px;flex-shrink:0;stroke:var(--txt2);fill:none;stroke-width:2;stroke-linecap:round}
 table{width:100%;border-collapse:collapse}
 thead tr{background:var(--bg)}
-th{font-size:.62rem;color:var(--txt2);letter-spacing:.08em;text-transform:uppercase;padding:9px 16px;text-align:left;border-bottom:1px solid var(--border);font-weight:500}
+th{font-size:.62rem;color:var(--txt2);letter-spacing:.07em;text-transform:uppercase;padding:9px 16px;text-align:left;border-bottom:1px solid var(--border);font-weight:500}
 td{padding:13px 16px;border-bottom:1px solid var(--border);font-size:.84rem;color:var(--txt);vertical-align:middle}
 tr:last-child td{border-bottom:none}
 tbody tr:hover{background:rgba(45,106,79,.03)}
@@ -95,18 +90,18 @@ tbody tr:hover{background:rgba(45,106,79,.03)}
 .td-thumb img{width:100%;height:100%;object-fit:cover}
 .td-thumb-text{font-family:'Inter',sans-serif;font-weight:700;font-size:.54rem;color:var(--txt2);text-transform:uppercase}
 .td-title{font-weight:500;color:var(--txt)}
-.td-url{font-size:.68rem;color:var(--txt2);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:'Inter',sans-serif}
-.badge{font-size:.58rem;padding:3px 8px;border-radius:5px;letter-spacing:.06em;text-transform:uppercase;display:inline-block;font-family:'Inter',sans-serif;font-weight:500}
+.td-url{font-size:.68rem;color:var(--txt2);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.badge{font-family:'Inter',sans-serif;font-size:.58rem;font-weight:600;padding:3px 8px;border-radius:5px;letter-spacing:.05em;text-transform:uppercase;display:inline-block}
 .badge-product{background:var(--acc-dim);color:var(--acc);border:1px solid var(--acc-border)}
 .badge-course{background:rgba(45,106,79,.08);color:var(--success);border:1px solid rgba(45,106,79,.22)}
 .badge-locked{background:rgba(183,121,31,.1);color:var(--warn);border:1px solid rgba(183,121,31,.28)}
 .badge-public{background:rgba(0,0,0,.04);color:var(--txt2);border:1px solid var(--border-d)}
 .actions{display:flex;gap:6px;align-items:center}
 
-/* PANEL / FORM */
+/* PANEL */
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px}
-.panel-head{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.panel-head-title{font-size:.65rem;color:var(--txt2);letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.panel-head{padding:15px 22px;border-bottom:1px solid var(--border)}
+.panel-head-title{font-size:.65rem;color:var(--txt2);letter-spacing:.07em;text-transform:uppercase;font-weight:500}
 .panel-body{padding:22px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .form-full{grid-column:1/-1}
@@ -117,21 +112,21 @@ input:focus,select:focus,textarea:focus{border-color:var(--acc);box-shadow:0 0 0
 input::placeholder,textarea::placeholder{color:var(--txt2);opacity:.6}
 select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b7068'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
 textarea{resize:vertical;min-height:86px;line-height:1.6}
-.hint{font-size:.72rem;color:var(--txt2);font-weight:400}
+.hint{font-size:.72rem;color:var(--txt2)}
 
 /* IMAGE UPLOAD */
-.upload-zone{border:2px dashed var(--border-d);border-radius:8px;padding:28px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);position:relative}
+.upload-zone{border:2px dashed var(--border-d);border-radius:8px;padding:24px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);position:relative}
 .upload-zone:hover,.upload-zone.drag{border-color:var(--acc);background:var(--acc-dim)}
-.upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 .upload-zone-text{font-size:.82rem;color:var(--txt2);line-height:1.6}
 .upload-zone-text strong{color:var(--acc);font-weight:600}
-.upload-zone-hint{font-size:.7rem;color:var(--txt2);opacity:.7;margin-top:4px}
+.upload-zone-hint{font-size:.7rem;color:var(--txt2);opacity:.65;margin-top:3px}
 .img-preview-wrap{position:relative;display:inline-block;margin-top:12px}
 .img-preview-wrap img{width:160px;height:90px;object-fit:cover;border-radius:6px;border:1px solid var(--border);display:block}
-.img-remove{position:absolute;top:-6px;right:-6px;width:20px;height:20px;background:var(--danger);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:.7rem;display:flex;align-items:center;justify-content:center;line-height:1}
+.img-remove{position:absolute;top:-6px;right:-6px;width:20px;height:20px;background:var(--danger);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:.7rem;display:flex;align-items:center;justify-content:center}
 
 /* TOAST */
-.toast{position:fixed;bottom:24px;right:24px;background:var(--txt);color:#fff;font-size:.72rem;padding:11px 18px;border-radius:8px;z-index:9999;transform:translateY(60px);opacity:0;transition:all .28s ease;pointer-events:none;font-family:'Inter',sans-serif}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--txt);color:#fff;font-family:'Inter',sans-serif;font-size:.72rem;padding:11px 18px;border-radius:8px;z-index:9999;transform:translateY(60px);opacity:0;transition:all .28s ease;pointer-events:none}
 .toast.show{transform:translateY(0);opacity:1}
 .toast.success{background:var(--acc)}
 .toast.error{background:var(--danger)}
@@ -140,23 +135,25 @@ textarea{resize:vertical;min-height:86px;line-height:1.6}
 .overlay{display:none;position:fixed;inset:0;background:rgba(10,20,12,.45);backdrop-filter:blur(4px);z-index:500;align-items:center;justify-content:center;padding:20px}
 .overlay.show{display:flex}
 @keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.modal{background:var(--surface);border:1px solid var(--border);border-radius:12px;width:100%;max-width:520px;animation:up .2s ease;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.12)}
-.modal-head{padding:20px 24px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:12px;width:100%;max-width:520px;animation:up .2s ease;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.1)}
+.modal-head{padding:18px 24px 15px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
 .modal-title{font-family:'Inter',sans-serif;font-weight:600;font-size:.95rem;color:var(--txt)}
-.modal-body{padding:22px 24px 24px}
-.modal-sub{font-size:.83rem;color:var(--txt2);line-height:1.7;margin-bottom:20px}
+.modal-body{padding:20px 24px 24px}
+.modal-sub{font-size:.83rem;color:var(--txt2);line-height:1.7;margin-bottom:18px}
 .modal-actions{display:flex;gap:10px;justify-content:flex-end}
 
 /* LOGIN */
 .login-wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);z-index:9999}
 .login-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:44px;width:100%;max-width:380px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
-.login-logo{font-family:'Inter',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.12em;color:var(--txt);text-transform:uppercase;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.login-logo{font-family:'Inter',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.1em;color:var(--txt);text-transform:uppercase;margin-bottom:5px;display:flex;align-items:center;gap:8px}
 .login-logo-dot{width:6px;height:6px;background:var(--acc);border-radius:50%}
 .login-sub{font-size:.83rem;color:var(--txt2);margin-bottom:28px}
-.login-field{margin-bottom:14px}
-.login-error{font-size:.68rem;color:var(--danger);margin-bottom:10px;display:none}
-.btn-login{width:100%;background:var(--acc);color:#fff;border:none;border-radius:8px;padding:13px;font-family:'Inter',sans-serif;font-weight:600;font-size:.85rem;cursor:pointer;transition:background .18s;margin-top:4px}
+.login-error{font-size:.7rem;color:var(--danger);margin-bottom:10px;display:none}
+.btn-login{width:100%;background:var(--acc);color:#fff;border:none;border-radius:8px;padding:13px;font-family:'Inter',sans-serif;font-weight:600;font-size:.88rem;cursor:pointer;transition:background .18s;margin-top:6px}
 .btn-login:hover{background:var(--acc-h)}
+.login-lang{display:flex;justify-content:center;gap:8px;margin-top:20px}
+.login-lang-btn{font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;padding:5px 14px;background:transparent;border:1px solid var(--border-d);color:var(--txt2);cursor:pointer;border-radius:6px;transition:all .15s}
+.login-lang-btn.active{background:var(--acc);border-color:var(--acc);color:#fff}
 
 /* SETTINGS */
 .settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -175,15 +172,17 @@ textarea{resize:vertical;min-height:86px;line-height:1.6}
 <div id="loginWrap" class="login-wrap">
   <div class="login-box">
     <div class="login-logo">ERIC TECH <span class="login-logo-dot"></span></div>
-    <div class="login-sub">後台管理系統 — 請驗證身份後登入</div>
-    <div class="login-field">
-      <div class="field">
-        <label>Admin Password</label>
-        <input type="password" id="loginPw" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()"/>
-      </div>
+    <div class="login-sub" data-i18n="login_sub">後台管理系統 — 請驗證身份後登入</div>
+    <div class="field" style="margin-bottom:14px">
+      <label data-i18n="login_pw_label">Admin Password</label>
+      <input type="password" id="loginPw" onkeydown="if(event.key==='Enter')doLogin()"/>
     </div>
-    <div class="login-error" id="loginErr">密碼錯誤，請重試</div>
-    <button class="btn-login" onclick="doLogin()">Login</button>
+    <div class="login-error" id="loginErr" data-i18n="login_error">密碼錯誤，請重試</div>
+    <button class="btn-login" onclick="doLogin()" data-i18n="login_btn">Login</button>
+    <div class="login-lang">
+      <button class="login-lang-btn active" onclick="setLang('zh',this,'login')">中文</button>
+      <button class="login-lang-btn" onclick="setLang('en',this,'login')">EN</button>
+    </div>
   </div>
 </div>
 
@@ -196,43 +195,50 @@ textarea{resize:vertical;min-height:86px;line-height:1.6}
     <div class="sb-badge">Admin Panel</div>
   </div>
   <div class="sb-nav">
-    <div class="sb-section-label">Main</div>
+    <div class="sb-section-label" data-i18n="sb_main">Main</div>
     <button class="sb-item active" onclick="nav('overview',this)">
       <span class="sb-item-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
-      Overview <span class="sb-count" id="sb-total">0</span>
+      <span data-i18n="nav_overview">Overview</span>
+      <span class="sb-count" id="sb-total">0</span>
     </button>
-    <div class="sb-section-label">Manage</div>
+    <div class="sb-section-label" data-i18n="sb_manage">Manage</div>
     <button class="sb-item" onclick="nav('entries',this)">
       <span class="sb-item-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></span>
-      All Entries <span class="sb-count" id="sb-all">0</span>
+      <span data-i18n="nav_entries">All Entries</span>
+      <span class="sb-count" id="sb-all">0</span>
     </button>
     <button class="sb-item" onclick="nav('add',this)">
       <span class="sb-item-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
-      Add New
+      <span data-i18n="nav_add">Add New</span>
     </button>
-    <div class="sb-section-label">Config</div>
+    <div class="sb-section-label" data-i18n="sb_config">Config</div>
     <button class="sb-item" onclick="nav('settings',this)">
       <span class="sb-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span>
-      Settings
+      <span data-i18n="nav_settings">Settings</span>
     </button>
   </div>
   <div class="sb-bottom">
-    <a class="sb-link" href="index.html" target="_blank">
+    <!-- lang switcher in sidebar -->
+    <div class="sb-lang">
+      <button class="sb-lang-btn active" onclick="setLang('zh',this,'sidebar')">中文</button>
+      <button class="sb-lang-btn" onclick="setLang('en',this,'sidebar')">English</button>
+    </div>
+    <a class="sb-link" href="index.html" target="_blank" style="margin-top:8px">
       <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      View Site
+      <span data-i18n="sb_view_site">View Site</span>
     </a>
     <button class="sb-link" onclick="logout()">
       <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-      Logout
+      <span data-i18n="sb_logout">Logout</span>
     </button>
   </div>
 </div>
 
 <div class="main">
   <div class="topbar">
-    <div class="topbar-title" id="topTitle">Overview</div>
+    <div class="topbar-title" id="topTitle"></div>
     <div class="topbar-right">
-      <button class="btn btn-primary" onclick="nav('add',document.querySelectorAll('.sb-item')[2])">+ Add New</button>
+      <button class="btn btn-primary" onclick="nav('add',document.querySelectorAll('.sb-item')[2])" data-i18n="btn_add_new">+ Add New</button>
     </div>
   </div>
 
@@ -241,175 +247,183 @@ textarea{resize:vertical;min-height:86px;line-height:1.6}
     <!-- OVERVIEW -->
     <div class="view active" id="view-overview">
       <div class="page-header">
-        <div><div class="page-title">Overview</div><div class="page-sub">所有產品與課程的概覽</div></div>
+        <div><div class="page-title" data-i18n="nav_overview">Overview</div><div class="page-sub" data-i18n="overview_sub">所有產品與課程的概覽</div></div>
       </div>
       <div class="stats-strip">
-        <div class="stat-box stat-box-accent"><div class="stat-box-n" id="ov-total">0</div><div class="stat-box-l">Total</div></div>
-        <div class="stat-box"><div class="stat-box-n" id="ov-products">0</div><div class="stat-box-l">Products</div></div>
-        <div class="stat-box"><div class="stat-box-n" id="ov-courses">0</div><div class="stat-box-l">Courses</div></div>
-        <div class="stat-box"><div class="stat-box-n" id="ov-locked">0</div><div class="stat-box-l">Locked</div></div>
+        <div class="stat-box stat-box-accent"><div class="stat-box-n" id="ov-total">0</div><div class="stat-box-l" data-i18n="stat_total">Total</div></div>
+        <div class="stat-box"><div class="stat-box-n" id="ov-products">0</div><div class="stat-box-l" data-i18n="stat_products">Products</div></div>
+        <div class="stat-box"><div class="stat-box-n" id="ov-courses">0</div><div class="stat-box-l" data-i18n="stat_courses">Courses</div></div>
+        <div class="stat-box"><div class="stat-box-n" id="ov-locked">0</div><div class="stat-box-l" data-i18n="stat_locked">Locked</div></div>
       </div>
       <div class="table-wrap">
         <div class="table-head">
-          <span class="table-head-title">Recent Entries</span>
-          <button class="btn btn-outline btn-sm" onclick="nav('entries',document.querySelectorAll('.sb-item')[1])">View All</button>
+          <span class="table-head-title" data-i18n="recent_entries">Recent Entries</span>
+          <button class="btn btn-outline btn-sm" onclick="nav('entries',document.querySelectorAll('.sb-item')[1])" data-i18n="view_all">View All</button>
         </div>
-        <table><thead><tr><th style="width:60px">Thumb</th><th>Title</th><th>Type</th><th>Access</th><th style="width:100px">Actions</th></tr></thead>
-        <tbody id="ov-table"></tbody></table>
+        <table><thead><tr>
+          <th style="width:60px" data-i18n="th_thumb">Thumb</th>
+          <th data-i18n="th_title">Title</th><th data-i18n="th_type">Type</th>
+          <th data-i18n="th_access">Access</th><th style="width:110px" data-i18n="th_actions">Actions</th>
+        </tr></thead><tbody id="ov-table"></tbody></table>
       </div>
     </div>
 
     <!-- ENTRIES -->
     <div class="view" id="view-entries">
       <div class="page-header">
-        <div><div class="page-title">All Entries</div><div class="page-sub">管理所有產品與課程</div></div>
-        <button class="btn btn-primary" onclick="nav('add',document.querySelectorAll('.sb-item')[2])">+ Add New</button>
+        <div><div class="page-title" data-i18n="nav_entries">All Entries</div><div class="page-sub" data-i18n="entries_sub">管理所有產品與課程</div></div>
+        <button class="btn btn-primary" onclick="nav('add',document.querySelectorAll('.sb-item')[2])" data-i18n="btn_add_new">+ Add New</button>
       </div>
       <div class="table-wrap">
         <div class="table-head">
           <span class="table-head-title">Entries <span id="entry-count" style="color:var(--acc);margin-left:4px"></span></span>
           <div class="search-box">
             <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input type="text" id="searchBox" placeholder="Search..." oninput="renderEntries()"/>
+            <input type="text" id="searchBox" oninput="renderEntries()"/>
           </div>
         </div>
-        <table><thead><tr><th style="width:60px">Thumb</th><th>Title</th><th>Type</th><th>URL</th><th>Access</th><th style="width:120px">Actions</th></tr></thead>
-        <tbody id="entries-table"></tbody></table>
+        <table><thead><tr>
+          <th style="width:60px" data-i18n="th_thumb">Thumb</th>
+          <th data-i18n="th_title">Title</th><th data-i18n="th_type">Type</th>
+          <th>URL</th><th data-i18n="th_access">Access</th>
+          <th style="width:120px" data-i18n="th_actions">Actions</th>
+        </tr></thead><tbody id="entries-table"></tbody></table>
       </div>
     </div>
 
     <!-- ADD NEW -->
     <div class="view" id="view-add">
       <div class="page-header">
-        <div><div class="page-title" id="formTitle">Add New Entry</div><div class="page-sub" id="formSub">新增一筆產品或課程</div></div>
+        <div><div class="page-title" id="formTitle"></div><div class="page-sub" id="formSub"></div></div>
       </div>
-
       <div class="panel">
-        <div class="panel-head"><span class="panel-head-title">Basic Information</span></div>
+        <div class="panel-head"><span class="panel-head-title" data-i18n="panel_basic">Basic Information</span></div>
         <div class="panel-body">
           <div class="form-grid">
-            <div class="field form-full"><label>Title *</label><input type="text" id="fTitle" placeholder="Product or course title"/></div>
-            <div class="field"><label>Type *</label><select id="fType"><option value="product">Product</option><option value="course">Course</option></select></div>
-            <div class="field"><label>Tags（逗號分隔）</label><input type="text" id="fTags" placeholder="React, Node.js, AI"/></div>
-            <div class="field form-full"><label>Description</label><textarea id="fDesc" placeholder="簡短描述此產品或課程..."></textarea></div>
+            <div class="field form-full"><label data-i18n="field_title">Title *</label><input type="text" id="fTitle"/></div>
+            <div class="field"><label data-i18n="field_type">Type *</label>
+              <select id="fType">
+                <option value="product" data-i18n="type_product">Product</option>
+                <option value="course" data-i18n="type_course">Course</option>
+              </select>
+            </div>
+            <div class="field"><label data-i18n="field_tags">Tags</label><input type="text" id="fTags"/></div>
+            <div class="field form-full"><label data-i18n="field_desc">Description</label><textarea id="fDesc"></textarea></div>
           </div>
         </div>
       </div>
-
       <div class="panel">
-        <div class="panel-head"><span class="panel-head-title">Link &amp; Thumbnail</span></div>
+        <div class="panel-head"><span class="panel-head-title" data-i18n="panel_link">Link &amp; Thumbnail</span></div>
         <div class="panel-body">
           <div class="form-grid">
-            <div class="field form-full"><label>Destination URL *</label><input type="url" id="fUrl" placeholder="https://your-product.onrender.com"/></div>
+            <div class="field form-full"><label data-i18n="field_url">Destination URL *</label><input type="url" id="fUrl"/></div>
             <div class="field form-full">
-              <label>Thumbnail Image <span class="hint">（上傳圖片或填入圖片網址）</span></label>
+              <label data-i18n="field_thumb">Thumbnail Image</label>
               <div style="display:flex;flex-direction:column;gap:10px;margin-top:2px">
                 <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fImgFile').click()">
                   <input type="file" id="fImgFile" accept="image/*" style="display:none" onchange="handleFileUpload(this)"/>
-                  <div class="upload-zone-text"><strong>點擊選擇照片</strong>，或拖曳至此</div>
+                  <div class="upload-zone-text"><strong data-i18n="upload_click">點擊選擇照片</strong><span data-i18n="upload_or">，或拖曳至此</span></div>
                   <div class="upload-zone-hint">JPG、PNG、GIF、WEBP，最大 5MB</div>
                 </div>
                 <div style="display:flex;align-items:center;gap:8px">
                   <div style="flex:1;height:1px;background:var(--border)"></div>
-                  <span style="font-size:.68rem;color:var(--txt2)">或填入圖片網址</span>
+                  <span style="font-size:.68rem;color:var(--txt2)" data-i18n="or_url">或填入圖片網址</span>
                   <div style="flex:1;height:1px;background:var(--border)"></div>
                 </div>
-                <input type="url" id="fImgUrl" placeholder="https://..." oninput="handleUrlInput(this)"/>
+                <input type="url" id="fImgUrl" oninput="handleUrlInput(this)"/>
                 <div id="fImgPreview" style="display:none" class="img-preview-wrap">
                   <img id="fImgPreviewImg" src="" alt="preview"/>
-                  <button class="img-remove" onclick="clearImg()" title="移除">✕</button>
+                  <button class="img-remove" onclick="clearImg()">✕</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <div class="panel">
-        <div class="panel-head"><span class="panel-head-title">Access Control</span></div>
+        <div class="panel-head"><span class="panel-head-title" data-i18n="panel_access">Access Control</span></div>
         <div class="panel-body">
           <div class="form-grid">
-            <div class="field">
-              <label>Access Password（可選）</label>
-              <input type="text" id="fPw" placeholder="留空則無密碼保護"/>
-            </div>
-            <div class="field" style="justify-content:flex-end;padding-top:22px">
-              <div class="hint" style="color:var(--txt2);line-height:1.6">設定後，使用者需輸入密碼才能前往目標頁面。</div>
-            </div>
+            <div class="field"><label data-i18n="field_pw">Access Password（可選）</label><input type="text" id="fPw"/></div>
+            <div class="field" style="justify-content:flex-end;padding-top:22px"><div class="hint" data-i18n="pw_hint">設定後，使用者需輸入密碼才能前往目標頁面。</div></div>
           </div>
         </div>
       </div>
-
       <div style="display:flex;gap:10px;justify-content:flex-end">
-        <button class="btn btn-outline" onclick="resetForm()">Cancel</button>
-        <button class="btn btn-primary" id="fSubmit" onclick="submitForm()">Add Entry</button>
+        <button class="btn btn-outline" onclick="resetForm()" data-i18n="btn_cancel">Cancel</button>
+        <button class="btn btn-primary" id="fSubmit" onclick="submitForm()" data-i18n="btn_add_entry">Add Entry</button>
       </div>
     </div>
 
     <!-- SETTINGS -->
     <div class="view" id="view-settings">
-      <div class="page-header"><div><div class="page-title">Settings</div><div class="page-sub">系統設定與帳號管理</div></div></div>
+      <div class="page-header"><div><div class="page-title" data-i18n="nav_settings">Settings</div><div class="page-sub" data-i18n="settings_sub">系統設定與帳號管理</div></div></div>
       <div class="settings-grid">
         <div class="panel">
-          <div class="panel-head"><span class="panel-head-title">Change Admin Password</span></div>
+          <div class="panel-head"><span class="panel-head-title" data-i18n="panel_change_pw">Change Admin Password</span></div>
           <div class="panel-body">
-            <div class="field" style="margin-bottom:12px"><label>Current Password</label><input type="password" id="curPw" placeholder="Current password"/></div>
-            <div class="field" style="margin-bottom:12px"><label>New Password</label><input type="password" id="newPw" placeholder="New password"/></div>
-            <div class="field" style="margin-bottom:16px"><label>Confirm New Password</label><input type="password" id="newPw2" placeholder="Confirm"/></div>
-            <button class="btn btn-primary" style="width:100%" onclick="changePw()">Update Password</button>
+            <div class="field" style="margin-bottom:12px"><label data-i18n="pw_current">Current Password</label><input type="password" id="curPw"/></div>
+            <div class="field" style="margin-bottom:12px"><label data-i18n="pw_new">New Password</label><input type="password" id="newPw"/></div>
+            <div class="field" style="margin-bottom:16px"><label data-i18n="pw_confirm">Confirm New Password</label><input type="password" id="newPw2"/></div>
+            <button class="btn btn-primary" style="width:100%" onclick="changePw()" data-i18n="btn_update_pw">Update Password</button>
           </div>
         </div>
         <div class="panel">
-          <div class="panel-head"><span class="panel-head-title">Data Management</span></div>
+          <div class="panel-head"><span class="panel-head-title" data-i18n="panel_data">Data Management</span></div>
           <div class="panel-body">
-            <p style="font-size:.83rem;color:var(--txt2);line-height:1.7;margin-bottom:18px">所有卡片資料儲存於瀏覽器 localStorage，可匯出備份或清除。</p>
+            <p style="font-size:.83rem;color:var(--txt2);line-height:1.7;margin-bottom:18px" data-i18n="data_desc">所有卡片資料儲存於瀏覽器 localStorage，可匯出備份或清除。</p>
             <div style="display:flex;flex-direction:column;gap:10px">
-              <button class="btn btn-outline" style="width:100%" onclick="exportData()">Export JSON Backup</button>
-              <button class="btn btn-danger" style="width:100%" onclick="clearData()">Clear All Entries</button>
+              <button class="btn btn-outline" style="width:100%" onclick="exportData()" data-i18n="btn_export">Export JSON Backup</button>
+              <button class="btn btn-danger" style="width:100%" onclick="clearData()" data-i18n="btn_clear">Clear All Entries</button>
             </div>
           </div>
         </div>
         <div class="panel" style="grid-column:1/-1">
-          <div class="panel-head"><span class="panel-head-title">About</span></div>
-          <div class="panel-body"><p style="font-size:.83rem;color:var(--txt2);line-height:1.7">ERIC TECH Admin Panel — 前台網址：<a href="index.html" target="_blank" style="color:var(--acc)">index.html</a></p></div>
+          <div class="panel-head"><span class="panel-head-title" data-i18n="panel_lang">Language / 語言</span></div>
+          <div class="panel-body">
+            <div style="display:flex;gap:10px">
+              <button class="btn btn-outline" id="lang-zh-btn" onclick="setLang('zh',this,'settings')" style="min-width:100px">繁體中文</button>
+              <button class="btn btn-outline" id="lang-en-btn" onclick="setLang('en',this,'settings')" style="min-width:100px">English</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
 </div>
-</div><!-- /app -->
+</div>
 
 <!-- EDIT MODAL -->
 <div class="overlay" id="editOv">
   <div class="modal">
-    <div class="modal-head"><div class="modal-title">Edit Entry</div><button class="btn btn-outline btn-sm" onclick="closeEdit()">Close</button></div>
+    <div class="modal-head"><div class="modal-title" data-i18n="modal_edit">Edit Entry</div><button class="btn btn-outline btn-sm" onclick="closeEdit()" data-i18n="btn_close">Close</button></div>
     <div class="modal-body">
       <div class="form-grid" style="margin-bottom:14px">
-        <div class="field"><label>Title *</label><input type="text" id="eTitle"/></div>
-        <div class="field"><label>Type</label><select id="eType"><option value="product">Product</option><option value="course">Course</option></select></div>
-        <div class="field form-full"><label>URL *</label><input type="url" id="eUrl"/></div>
+        <div class="field"><label data-i18n="field_title">Title *</label><input type="text" id="eTitle"/></div>
+        <div class="field"><label data-i18n="field_type">Type</label><select id="eType"><option value="product">Product</option><option value="course">Course</option></select></div>
+        <div class="field form-full"><label data-i18n="field_url">URL *</label><input type="url" id="eUrl"/></div>
         <div class="field form-full">
-          <label>Thumbnail</label>
+          <label data-i18n="field_thumb">Thumbnail</label>
           <div style="display:flex;flex-direction:column;gap:8px">
-            <div class="upload-zone" style="padding:16px" onclick="document.getElementById('eImgFile').click()">
+            <div class="upload-zone" style="padding:14px" onclick="document.getElementById('eImgFile').click()">
               <input type="file" id="eImgFile" accept="image/*" style="display:none" onchange="handleEditFileUpload(this)"/>
-              <div class="upload-zone-text" style="font-size:.78rem"><strong>點擊上傳新圖片</strong></div>
+              <div class="upload-zone-text" style="font-size:.78rem"><strong data-i18n="upload_click_new">點擊上傳新圖片</strong></div>
             </div>
-            <input type="url" id="eImg" placeholder="或填入圖片網址..." oninput="handleEditUrlInput(this)"/>
+            <input type="url" id="eImg" oninput="handleEditUrlInput(this)"/>
             <div id="eImgPreview" style="display:none" class="img-preview-wrap">
               <img id="eImgPreviewImg" src="" alt=""/>
-              <button class="img-remove" onclick="clearEditImg()" title="移除">✕</button>
+              <button class="img-remove" onclick="clearEditImg()">✕</button>
             </div>
           </div>
         </div>
-        <div class="field"><label>Password</label><input type="text" id="ePw" placeholder="留空則公開"/></div>
-        <div class="field"><label>Tags</label><input type="text" id="eTags" placeholder="React, AI"/></div>
-        <div class="field form-full"><label>Description</label><textarea id="eDesc"></textarea></div>
+        <div class="field"><label data-i18n="field_pw">Password</label><input type="text" id="ePw"/></div>
+        <div class="field"><label data-i18n="field_tags">Tags</label><input type="text" id="eTags"/></div>
+        <div class="field form-full"><label data-i18n="field_desc">Description</label><textarea id="eDesc"></textarea></div>
       </div>
       <div class="modal-actions">
-        <button class="btn btn-outline" onclick="closeEdit()">Cancel</button>
-        <button class="btn btn-primary" onclick="saveEdit()">Save Changes</button>
+        <button class="btn btn-outline" onclick="closeEdit()" data-i18n="btn_cancel">Cancel</button>
+        <button class="btn btn-primary" onclick="saveEdit()" data-i18n="btn_save">Save Changes</button>
       </div>
     </div>
   </div>
@@ -418,10 +432,13 @@ textarea{resize:vertical;min-height:86px;line-height:1.6}
 <!-- DELETE CONFIRM -->
 <div class="overlay" id="delOv">
   <div class="modal" style="max-width:380px">
-    <div class="modal-head"><div class="modal-title">Delete Entry</div><button class="btn btn-outline btn-sm" onclick="closeDel()">Close</button></div>
+    <div class="modal-head"><div class="modal-title" data-i18n="modal_delete">Delete Entry</div><button class="btn btn-outline btn-sm" onclick="closeDel()" data-i18n="btn_close">Close</button></div>
     <div class="modal-body">
-      <div class="modal-sub">確定要刪除「<span id="delName"></span>」嗎？此操作無法復原。</div>
-      <div class="modal-actions"><button class="btn btn-outline" onclick="closeDel()">Cancel</button><button class="btn btn-danger" onclick="confirmDel()">Delete</button></div>
+      <div class="modal-sub" id="delMsg"></div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" onclick="closeDel()" data-i18n="btn_cancel">Cancel</button>
+        <button class="btn btn-danger" onclick="confirmDel()" data-i18n="btn_delete">Delete</button>
+      </div>
     </div>
   </div>
 </div>
@@ -429,268 +446,391 @@ textarea{resize:vertical;min-height:86px;line-height:1.6}
 <div class="toast" id="toast"></div>
 
 <script>
-const ADMIN_KEY='et_admin_pw', CARDS_KEY='et_cards', DEFAULT_PW='admin123';
-const DEFAULT_CARDS=[
-  {id:1,title:'座位預訂系統',type:'product',url:'https://seat-booking-rlf2.onrender.com',img:'',desc:'即時座位管理與線上預訂平台，支援多場地配置與即時同步。',tags:['Node.js','Express','WebSocket'],pw:'demo123'},
-  {id:2,title:'Aura App',type:'product',url:'https://aura-v0q3.onrender.com',img:'',desc:'智慧氛圍感知應用，打造沉浸式互動體驗。',tags:['React','AI','UX'],pw:''},
-  {id:3,title:'Prompt 工程課程',type:'course',url:'https://eric693.github.io/prompt_course/',img:'',desc:'從零開始學習 AI Prompt 工程，掌握 ChatGPT 與 Claude 的核心技巧。',tags:['AI','ChatGPT','Claude'],pw:'course2024'}
+// ── SUPABASE CONFIG ──
+const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+const SUPABASE_KEY = 'YOUR_SUPABASE_ANON_KEY';
+const USE_SUPABASE = SUPABASE_URL !== 'YOUR_SUPABASE_URL';
+
+// ── I18N ──
+const i18n = {
+  zh: {
+    login_sub:'後台管理系統 — 請驗證身份後登入',login_pw_label:'管理員密碼',login_btn:'登入',login_error:'密碼錯誤，請重試',
+    sb_main:'主選單',sb_manage:'管理',sb_config:'設定',
+    nav_overview:'概覽',nav_entries:'所有項目',nav_add:'新增項目',nav_settings:'設定',
+    sb_view_site:'查看前台',sb_logout:'登出',
+    overview_sub:'所有產品與課程的概覽',
+    stat_total:'總計',stat_products:'產品',stat_courses:'課程',stat_locked:'已鎖定',
+    recent_entries:'最近項目',view_all:'查看全部',
+    th_thumb:'縮圖',th_title:'標題',th_type:'類型',th_access:'存取',th_actions:'操作',
+    entries_sub:'管理所有產品與課程',
+    btn_add_new:'+ 新增',
+    panel_basic:'基本資訊',panel_link:'連結與縮圖',panel_access:'存取控制',
+    field_title:'標題 *',field_type:'類型 *',field_tags:'標籤（逗號分隔）',
+    field_desc:'說明',field_url:'目標網址 *',field_thumb:'縮圖',
+    field_pw:'存取密碼（可選）',pw_hint:'設定後，使用者需輸入密碼才能前往目標頁面。',
+    upload_click:'點擊選擇照片',upload_or:'，或拖曳至此',upload_click_new:'點擊上傳新圖片',
+    or_url:'或填入圖片網址',
+    type_product:'產品',type_course:'課程',
+    btn_cancel:'取消',btn_add_entry:'新增項目',btn_save:'儲存變更',btn_delete:'刪除',
+    btn_close:'關閉',
+    modal_edit:'編輯項目',modal_delete:'刪除項目',
+    del_confirm:'確定要刪除「{name}」嗎？此操作無法復原。',
+    settings_sub:'系統設定與帳號管理',
+    panel_change_pw:'修改管理員密碼',pw_current:'目前密碼',pw_new:'新密碼',pw_confirm:'確認新密碼',btn_update_pw:'更新密碼',
+    panel_data:'資料管理',data_desc:'所有卡片資料儲存於瀏覽器 localStorage，可匯出備份或清除。',
+    btn_export:'匯出 JSON 備份',btn_clear:'清除所有項目',
+    panel_lang:'語言設定',
+    topbar_overview:'概覽',topbar_entries:'所有項目',topbar_add:'新增項目',topbar_settings:'設定',
+    toast_added:'項目已新增',toast_updated:'項目已更新',toast_deleted:'項目已刪除',
+    toast_pw_updated:'密碼已更新',toast_exported:'已匯出',toast_cleared:'已清除',
+    toast_err_required:'請填寫標題和網址',toast_err_pw_wrong:'目前密碼錯誤',
+    toast_err_pw_empty:'請輸入新密碼',toast_err_pw_mismatch:'兩次密碼不一致',
+    search_placeholder:'搜尋項目...',
+    no_entries:'尚無項目。',no_results:'找不到結果。',
+    badge_product:'產品',badge_course:'課程',badge_locked:'已鎖定',badge_public:'公開',
+    formTitle_add:'新增項目',formSub_add:'新增一筆產品或課程',
+    fSubmit_add:'新增項目',
+  },
+  en: {
+    login_sub:'Admin Panel — Please verify your identity to log in',login_pw_label:'Admin Password',login_btn:'Login',login_error:'Incorrect password. Please try again.',
+    sb_main:'Main',sb_manage:'Manage',sb_config:'Config',
+    nav_overview:'Overview',nav_entries:'All Entries',nav_add:'Add New',nav_settings:'Settings',
+    sb_view_site:'View Site',sb_logout:'Logout',
+    overview_sub:'Summary of all products and courses',
+    stat_total:'Total',stat_products:'Products',stat_courses:'Courses',stat_locked:'Locked',
+    recent_entries:'Recent Entries',view_all:'View All',
+    th_thumb:'Thumb',th_title:'Title',th_type:'Type',th_access:'Access',th_actions:'Actions',
+    entries_sub:'Manage all products and courses',
+    btn_add_new:'+ Add New',
+    panel_basic:'Basic Information',panel_link:'Link & Thumbnail',panel_access:'Access Control',
+    field_title:'Title *',field_type:'Type *',field_tags:'Tags (comma separated)',
+    field_desc:'Description',field_url:'Destination URL *',field_thumb:'Thumbnail',
+    field_pw:'Access Password (optional)',pw_hint:'If set, users must enter this password before accessing the destination.',
+    upload_click:'Click to choose image',upload_or:' or drag & drop',upload_click_new:'Click to upload new image',
+    or_url:'or enter image URL',
+    type_product:'Product',type_course:'Course',
+    btn_cancel:'Cancel',btn_add_entry:'Add Entry',btn_save:'Save Changes',btn_delete:'Delete',
+    btn_close:'Close',
+    modal_edit:'Edit Entry',modal_delete:'Delete Entry',
+    del_confirm:'Are you sure you want to delete "{name}"? This cannot be undone.',
+    settings_sub:'System settings and account management',
+    panel_change_pw:'Change Admin Password',pw_current:'Current Password',pw_new:'New Password',pw_confirm:'Confirm New Password',btn_update_pw:'Update Password',
+    panel_data:'Data Management',data_desc:'All card data is stored in the browser localStorage. You can export a backup or clear all data.',
+    btn_export:'Export JSON Backup',btn_clear:'Clear All Entries',
+    panel_lang:'Language / 語言',
+    topbar_overview:'Overview',topbar_entries:'All Entries',topbar_add:'Add New Entry',topbar_settings:'Settings',
+    toast_added:'Entry added',toast_updated:'Entry updated',toast_deleted:'Entry deleted',
+    toast_pw_updated:'Password updated',toast_exported:'Exported',toast_cleared:'All entries cleared',
+    toast_err_required:'Title and URL are required',toast_err_pw_wrong:'Current password incorrect',
+    toast_err_pw_empty:'Please enter a new password',toast_err_pw_mismatch:'Passwords do not match',
+    search_placeholder:'Search entries...',
+    no_entries:'No entries yet.',no_results:'No results found.',
+    badge_product:'Product',badge_course:'Course',badge_locked:'Locked',badge_public:'Public',
+    formTitle_add:'Add New Entry',formSub_add:'Add a new product or course',
+    fSubmit_add:'Add Entry',
+  }
+};
+
+let lang = localStorage.getItem('et_lang') || 'zh';
+function t(key) { return i18n[lang][key] || i18n['en'][key] || key; }
+
+function applyI18n() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.innerHTML = t(key);
+  });
+  document.getElementById('searchBox').placeholder = t('search_placeholder');
+  document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+  updateLangBtns();
+  // update topbar if view is active
+  const activeView = document.querySelector('.view.active');
+  if (activeView) {
+    const id = activeView.id.replace('view-','');
+    const key = 'topbar_' + id;
+    document.getElementById('topTitle').textContent = t(key) || t('nav_'+id);
+  }
+}
+
+function updateLangBtns() {
+  // sidebar
+  document.querySelectorAll('.sb-lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === (lang === 'zh' ? '中文' : 'English')));
+  // login
+  document.querySelectorAll('.login-lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === (lang === 'zh' ? '中文' : 'EN')));
+  // settings buttons
+  const zb = document.getElementById('lang-zh-btn'), eb = document.getElementById('lang-en-btn');
+  if (zb) { zb.classList.toggle('btn-primary', lang==='zh'); zb.classList.toggle('btn-outline', lang!=='zh'); }
+  if (eb) { eb.classList.toggle('btn-primary', lang==='en'); eb.classList.toggle('btn-outline', lang!=='en'); }
+}
+
+function setLang(l, btn, ctx) {
+  lang = l;
+  localStorage.setItem('et_lang', l);
+  applyI18n();
+  // re-render active view
+  const activeView = document.querySelector('.view.active');
+  if (activeView) {
+    const id = activeView.id.replace('view-','');
+    if (id === 'overview') renderOverview();
+    if (id === 'entries') renderEntries();
+  }
+}
+
+// ── AUTH ──
+const ADMIN_KEY = 'et_admin_pw', CARDS_KEY = 'et_cards', DEFAULT_PW = 'admin123';
+const DEFAULT_CARDS = [
+  {id:1,title:'座位預訂系統',type:'product',url:'https://seat-booking-rlf2.onrender.com',img:'',description:'即時座位管理與線上預訂平台，支援多場地配置與即時同步。',tags:['Node.js','Express','WebSocket'],password:'demo123'},
+  {id:2,title:'Aura App',type:'product',url:'https://aura-v0q3.onrender.com',img:'',description:'智慧氛圍感知應用，打造沉浸式互動體驗。',tags:['React','AI','UX'],password:''},
+  {id:3,title:'Prompt 工程課程',type:'course',url:'https://eric693.github.io/prompt_course/',img:'',description:'從零開始學習 AI Prompt 工程，掌握 ChatGPT 與 Claude 的核心技巧。',tags:['AI','ChatGPT','Claude'],password:'course2024'}
 ];
-let adminPw=localStorage.getItem(ADMIN_KEY)||DEFAULT_PW;
-let cards=JSON.parse(localStorage.getItem(CARDS_KEY)||'null')||DEFAULT_CARDS;
-let nextId=Math.max(0,...cards.map(c=>c.id))+1;
-let editId=null, delId=null, pendingImg='';
+let adminPw = localStorage.getItem(ADMIN_KEY) || DEFAULT_PW;
+let cards = JSON.parse(localStorage.getItem(CARDS_KEY) || 'null') || DEFAULT_CARDS;
+let nextId = Math.max(0, ...cards.map(c=>c.id)) + 1;
+let editId = null, delId = null, pendingImg = '', editPendingImg = '';
 
-function save(){localStorage.setItem(CARDS_KEY,JSON.stringify(cards))}
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-function initials(t){return t.split(/[\s\-_]+/).map(w=>w[0]||'').join('').toUpperCase().slice(0,3)}
+function save() { localStorage.setItem(CARDS_KEY, JSON.stringify(cards)); }
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function initials(s) { return s.split(/[\s\-_]+/).map(w=>w[0]||'').join('').toUpperCase().slice(0,3); }
 
-/* LOGIN */
-function doLogin(){
-  const v=document.getElementById('loginPw').value;
-  if(v===adminPw){
-    document.getElementById('loginWrap').style.display='none';
-    const app=document.getElementById('app');
-    app.style.display='flex';
-    document.getElementById('loginPw').value='';
+// ── SUPABASE ──
+async function supabaseFetch(path, opts = {}) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=representation', ...opts.headers },
+    ...opts
+  });
+  if (!res.ok) throw new Error(await res.text());
+  return res.status === 204 ? null : res.json();
+}
+
+async function loadCards() {
+  if (!USE_SUPABASE) { cards = JSON.parse(localStorage.getItem(CARDS_KEY) || 'null') || DEFAULT_CARDS; return; }
+  try {
+    const data = await supabaseFetch('entries?select=*&order=created_at.asc');
+    cards = data.map(r => ({ id:r.id, title:r.title, type:r.type, url:r.url, img:r.img||'', description:r.description||'', tags:r.tags||[], password:r.password||'' }));
+    nextId = Math.max(0, ...cards.map(c=>c.id)) + 1;
+  } catch(e) { console.warn('Supabase failed:', e); cards = JSON.parse(localStorage.getItem(CARDS_KEY)||'null')||DEFAULT_CARDS; }
+}
+
+// ── LOGIN ──
+function doLogin() {
+  const v = document.getElementById('loginPw').value;
+  if (v === adminPw) {
+    document.getElementById('loginWrap').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+    document.getElementById('loginPw').value = '';
     initApp();
   } else {
-    document.getElementById('loginErr').style.display='block';
+    document.getElementById('loginErr').style.display = 'block';
     document.getElementById('loginPw').focus();
   }
 }
-document.getElementById('loginPw').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
-function logout(){document.getElementById('app').style.display='none';document.getElementById('loginWrap').style.display='flex';}
+document.getElementById('loginPw').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+function logout() { document.getElementById('app').style.display='none'; document.getElementById('loginWrap').style.display='flex'; }
 
-/* NAV */
-const titles={overview:'Overview',entries:'All Entries',add:'Add New Entry',settings:'Settings'};
-function nav(id,btn){
+// ── NAV ──
+function nav(id, btn) {
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
   document.getElementById('view-'+id).classList.add('active');
-  if(btn)btn.classList.add('active');
-  document.getElementById('topTitle').textContent=titles[id]||'';
-  if(id==='overview')renderOverview();
-  if(id==='entries')renderEntries();
-  if(id==='add'){resetForm();}
+  if (btn) btn.classList.add('active');
+  document.getElementById('topTitle').textContent = t('topbar_'+id) || t('nav_'+id);
+  if (id==='overview') renderOverview();
+  if (id==='entries') renderEntries();
+  if (id==='add') resetForm();
   updateSbCounts();
 }
 
-function updateSbCounts(){
-  document.getElementById('sb-total').textContent=cards.length;
-  document.getElementById('sb-all').textContent=cards.length;
+function updateSbCounts() {
+  document.getElementById('sb-total').textContent = cards.length;
+  document.getElementById('sb-all').textContent = cards.length;
 }
-function updateOvStats(){
-  document.getElementById('ov-total').textContent=cards.length;
-  document.getElementById('ov-products').textContent=cards.filter(c=>c.type==='product').length;
-  document.getElementById('ov-courses').textContent=cards.filter(c=>c.type==='course').length;
-  document.getElementById('ov-locked').textContent=cards.filter(c=>c.pw).length;
-  document.getElementById('entry-count').textContent=cards.length;
+function updateStats() {
+  document.getElementById('ov-total').textContent = cards.length;
+  document.getElementById('ov-products').textContent = cards.filter(c=>c.type==='product').length;
+  document.getElementById('ov-courses').textContent = cards.filter(c=>c.type==='course').length;
+  document.getElementById('ov-locked').textContent = cards.filter(c=>c.password).length;
+  document.getElementById('entry-count').textContent = cards.length;
 }
 
-function thumbHtml(c){
+function thumbHtml(c) {
   return c.img
-    ?`<div class="td-thumb"><img src="${esc(c.img)}" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><div class="td-thumb-text" style="display:none">${initials(c.title)}</div></div>`
-    :`<div class="td-thumb"><div class="td-thumb-text">${initials(c.title)}</div></div>`;
+    ? `<div class="td-thumb"><img src="${esc(c.img)}" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><div class="td-thumb-text" style="display:none">${initials(c.title)}</div></div>`
+    : `<div class="td-thumb"><div class="td-thumb-text">${initials(c.title)}</div></div>`;
 }
 
-function renderOverview(){
-  updateOvStats();
-  const tbody=document.getElementById('ov-table');
-  if(!cards.length){tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--txt2);padding:28px;font-size:.82rem">No entries yet.</td></tr>';return}
-  tbody.innerHTML=cards.slice().reverse().slice(0,8).map(c=>`
+function renderOverview() {
+  updateStats();
+  const tbody = document.getElementById('ov-table');
+  if (!cards.length) { tbody.innerHTML=`<tr><td colspan="5" style="text-align:center;color:var(--txt2);padding:28px;font-size:.82rem">${t('no_entries')}</td></tr>`; return; }
+  tbody.innerHTML = cards.slice().reverse().slice(0,8).map(c=>`
     <tr><td>${thumbHtml(c)}</td><td><div class="td-title">${esc(c.title)}</div></td>
-    <td><span class="badge badge-${c.type}">${c.type==='course'?'Course':'Product'}</span></td>
-    <td><span class="badge ${c.pw?'badge-locked':'badge-public'}">${c.pw?'Locked':'Public'}</span></td>
-    <td><div class="actions"><button class="btn btn-outline btn-sm" onclick="openEdit(${c.id})">Edit</button><button class="btn btn-danger btn-sm" onclick="openDel(${c.id})">Del</button></div></td>
+    <td><span class="badge badge-${c.type}">${t('badge_'+c.type)}</span></td>
+    <td><span class="badge ${c.password?'badge-locked':'badge-public'}">${c.password?t('badge_locked'):t('badge_public')}</span></td>
+    <td><div class="actions"><button class="btn btn-outline btn-sm" onclick="openEdit(${c.id})" data-i18n="th_actions">${t('modal_edit').replace('Edit ','')}</button><button class="btn btn-danger btn-sm" onclick="openDel(${c.id})">Del</button></div></td>
     </tr>`).join('');
 }
 
-function renderEntries(){
-  updateOvStats();
-  const q=(document.getElementById('searchBox')?.value||'').toLowerCase();
-  const list=q?cards.filter(c=>c.title.toLowerCase().includes(q)||(c.desc||'').toLowerCase().includes(q)||(c.tags||[]).join(' ').toLowerCase().includes(q)):cards;
-  document.getElementById('entry-count').textContent=list.length;
-  const tbody=document.getElementById('entries-table');
-  if(!list.length){tbody.innerHTML=`<tr><td colspan="6" style="text-align:center;color:var(--txt2);padding:32px;font-size:.82rem">${q?'No results found.':'No entries yet.'}</td></tr>`;return}
-  tbody.innerHTML=list.map(c=>`
+function renderEntries() {
+  updateStats();
+  const q = (document.getElementById('searchBox')?.value||'').toLowerCase();
+  const list = q ? cards.filter(c=>c.title.toLowerCase().includes(q)||(c.description||'').toLowerCase().includes(q)||(c.tags||[]).join(' ').toLowerCase().includes(q)) : cards;
+  document.getElementById('entry-count').textContent = list.length;
+  const tbody = document.getElementById('entries-table');
+  if (!list.length) { tbody.innerHTML=`<tr><td colspan="6" style="text-align:center;color:var(--txt2);padding:32px;font-size:.82rem">${q?t('no_results'):t('no_entries')}</td></tr>`; return; }
+  tbody.innerHTML = list.map(c=>`
     <tr><td>${thumbHtml(c)}</td>
-    <td><div class="td-title">${esc(c.title)}</div>${(c.tags||[]).length?`<div style="margin-top:4px;display:flex;gap:4px;flex-wrap:wrap">${c.tags.map(t=>`<span class="badge badge-public" style="font-size:.5rem">${esc(t)}</span>`).join('')}</div>`:''}</td>
-    <td><span class="badge badge-${c.type}">${c.type==='course'?'Course':'Product'}</span></td>
+    <td><div class="td-title">${esc(c.title)}</div>${(c.tags||[]).length?`<div style="margin-top:4px;display:flex;gap:4px;flex-wrap:wrap">${c.tags.map(tag=>`<span class="badge badge-public" style="font-size:.5rem">${esc(tag)}</span>`).join('')}</div>`:''}</td>
+    <td><span class="badge badge-${c.type}">${t('badge_'+c.type)}</span></td>
     <td><div class="td-url" title="${esc(c.url)}">${esc(c.url)}</div></td>
-    <td><span class="badge ${c.pw?'badge-locked':'badge-public'}">${c.pw?'Locked':'Public'}</span></td>
+    <td><span class="badge ${c.password?'badge-locked':'badge-public'}">${c.password?t('badge_locked'):t('badge_public')}</span></td>
     <td><div class="actions"><button class="btn btn-outline btn-sm" onclick="openEdit(${c.id})">Edit</button><button class="btn btn-danger btn-sm" onclick="openDel(${c.id})">Delete</button></div></td>
     </tr>`).join('');
 }
 
-/* IMAGE UPLOAD */
-function handleFileUpload(input){
-  const file=input.files[0]; if(!file)return;
-  if(file.size>5*1024*1024){toast('圖片太大，請選擇 5MB 以下的圖片','error');return}
-  const reader=new FileReader();
-  reader.onload=e=>{
-    pendingImg=e.target.result;
-    document.getElementById('fImgUrl').value='';
-    document.getElementById('fImgPreviewImg').src=pendingImg;
-    document.getElementById('fImgPreview').style.display='inline-block';
-  };
+// ── IMAGE UPLOAD ──
+function handleFileUpload(input) {
+  const file = input.files[0]; if(!file) return;
+  if (file.size > 5*1024*1024) { toast('圖片太大，請選擇 5MB 以下', 'error'); return; }
+  const reader = new FileReader();
+  reader.onload = e => { pendingImg = e.target.result; document.getElementById('fImgUrl').value=''; document.getElementById('fImgPreviewImg').src=pendingImg; document.getElementById('fImgPreview').style.display='inline-block'; };
   reader.readAsDataURL(file);
 }
-function handleUrlInput(input){
-  const v=input.value.trim();
-  if(v){pendingImg=v;document.getElementById('fImgPreviewImg').src=v;document.getElementById('fImgPreview').style.display='inline-block';}
-  else{clearImg();}
+function handleUrlInput(input) {
+  const v = input.value.trim();
+  if (v) { pendingImg=v; document.getElementById('fImgPreviewImg').src=v; document.getElementById('fImgPreview').style.display='inline-block'; }
+  else clearImg();
 }
-function clearImg(){
-  pendingImg='';
-  document.getElementById('fImgUrl').value='';
-  document.getElementById('fImgFile').value='';
-  document.getElementById('fImgPreview').style.display='none';
-}
+function clearImg() { pendingImg=''; document.getElementById('fImgUrl').value=''; document.getElementById('fImgFile').value=''; document.getElementById('fImgPreview').style.display='none'; }
 
-/* EDIT IMAGE */
-let editPendingImg='';
-function handleEditFileUpload(input){
-  const file=input.files[0]; if(!file)return;
-  if(file.size>5*1024*1024){toast('圖片太大，請選擇 5MB 以下','error');return}
-  const reader=new FileReader();
-  reader.onload=e=>{
-    editPendingImg=e.target.result;
-    document.getElementById('eImg').value='';
-    document.getElementById('eImgPreviewImg').src=editPendingImg;
-    document.getElementById('eImgPreview').style.display='inline-block';
-  };
+function handleEditFileUpload(input) {
+  const file = input.files[0]; if(!file) return;
+  if (file.size > 5*1024*1024) { toast('圖片太大', 'error'); return; }
+  const reader = new FileReader();
+  reader.onload = e => { editPendingImg=e.target.result; document.getElementById('eImg').value=''; document.getElementById('eImgPreviewImg').src=editPendingImg; document.getElementById('eImgPreview').style.display='inline-block'; };
   reader.readAsDataURL(file);
 }
-function handleEditUrlInput(input){
-  const v=input.value.trim();
-  if(v){editPendingImg=v;document.getElementById('eImgPreviewImg').src=v;document.getElementById('eImgPreview').style.display='inline-block';}
-  else{clearEditImg();}
+function handleEditUrlInput(input) {
+  const v = input.value.trim();
+  if (v) { editPendingImg=v; document.getElementById('eImgPreviewImg').src=v; document.getElementById('eImgPreview').style.display='inline-block'; }
+  else clearEditImg();
 }
-function clearEditImg(){
-  editPendingImg='';
-  document.getElementById('eImg').value='';
-  document.getElementById('eImgFile').value='';
-  document.getElementById('eImgPreview').style.display='none';
-}
+function clearEditImg() { editPendingImg=''; document.getElementById('eImg').value=''; document.getElementById('eImgFile').value=''; document.getElementById('eImgPreview').style.display='none'; }
 
-/* DRAG & DROP */
-const uploadZone=document.getElementById('uploadZone');
-uploadZone.addEventListener('dragover',e=>{e.preventDefault();uploadZone.classList.add('drag')});
-uploadZone.addEventListener('dragleave',()=>uploadZone.classList.remove('drag'));
-uploadZone.addEventListener('drop',e=>{
+// drag & drop
+const uploadZone = document.getElementById('uploadZone');
+uploadZone.addEventListener('dragover', e=>{e.preventDefault();uploadZone.classList.add('drag')});
+uploadZone.addEventListener('dragleave', ()=>uploadZone.classList.remove('drag'));
+uploadZone.addEventListener('drop', e=>{
   e.preventDefault(); uploadZone.classList.remove('drag');
-  const file=e.dataTransfer.files[0]; if(!file||!file.type.startsWith('image/'))return;
-  const dt=new DataTransfer(); dt.items.add(file);
-  document.getElementById('fImgFile').files=dt.files;
+  const file = e.dataTransfer.files[0]; if(!file||!file.type.startsWith('image/')) return;
+  const dt = new DataTransfer(); dt.items.add(file);
+  document.getElementById('fImgFile').files = dt.files;
   handleFileUpload(document.getElementById('fImgFile'));
 });
 
-/* FORM */
-function resetForm(){
-  pendingImg='';
+// ── FORM ──
+function resetForm() {
+  pendingImg = '';
   ['fTitle','fUrl','fImgUrl','fPw','fTags','fDesc'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('fImgFile').value='';
-  document.getElementById('fType').value='product';
-  document.getElementById('fImgPreview').style.display='none';
-  document.getElementById('formTitle').textContent='Add New Entry';
-  document.getElementById('formSub').textContent='新增一筆產品或課程';
-  document.getElementById('fSubmit').textContent='Add Entry';
+  document.getElementById('fImgFile').value = '';
+  document.getElementById('fType').value = 'product';
+  document.getElementById('fImgPreview').style.display = 'none';
+  document.getElementById('formTitle').textContent = t('formTitle_add');
+  document.getElementById('formSub').textContent = t('formSub_add');
+  document.getElementById('fSubmit').textContent = t('fSubmit_add');
 }
 
-function submitForm(){
-  const title=document.getElementById('fTitle').value.trim();
-  const url=document.getElementById('fUrl').value.trim();
-  if(!title||!url){toast('Title and URL are required','error');return}
-  cards.push({
-    id:nextId++, title,
-    type:document.getElementById('fType').value,
-    url, img:pendingImg||'',
-    desc:document.getElementById('fDesc').value.trim(),
-    tags:document.getElementById('fTags').value.split(',').map(t=>t.trim()).filter(Boolean),
-    pw:document.getElementById('fPw').value.trim()
-  });
-  save(); resetForm();
-  nav('entries',document.querySelectorAll('.sb-item')[1]);
-  toast('Entry added','success');
+async function submitForm() {
+  const title = document.getElementById('fTitle').value.trim();
+  const url = document.getElementById('fUrl').value.trim();
+  if (!title||!url) { toast(t('toast_err_required'),'error'); return; }
+  const entry = { title, type:document.getElementById('fType').value, url, img:pendingImg||'', description:document.getElementById('fDesc').value.trim(), tags:document.getElementById('fTags').value.split(',').map(s=>s.trim()).filter(Boolean), password:document.getElementById('fPw').value.trim() };
+  if (USE_SUPABASE) {
+    try {
+      const res = await supabaseFetch('entries', { method:'POST', body:JSON.stringify({...entry, tags:entry.tags}) });
+      if (res && res[0]) cards.push({...entry, id:res[0].id});
+    } catch(e) { toast('Error: '+e.message,'error'); return; }
+  } else {
+    cards.push({ id:nextId++, ...entry });
+    save();
+  }
+  resetForm(); nav('entries', document.querySelectorAll('.sb-item')[1]); toast(t('toast_added'),'success');
 }
 
-/* EDIT MODAL */
-function openEdit(id){
-  const c=cards.find(x=>x.id===id); if(!c)return;
+// ── EDIT ──
+function openEdit(id) {
+  const c = cards.find(x=>x.id===id); if(!c) return;
   editId=id; editPendingImg=c.img||'';
-  document.getElementById('eTitle').value=c.title;
-  document.getElementById('eType').value=c.type;
-  document.getElementById('eUrl').value=c.url;
-  document.getElementById('eImg').value=c.img&&!c.img.startsWith('data:')?c.img:'';
-  document.getElementById('ePw').value=c.pw||'';
-  document.getElementById('eTags').value=(c.tags||[]).join(', ');
-  document.getElementById('eDesc').value=c.desc||'';
+  document.getElementById('eTitle').value=c.title; document.getElementById('eType').value=c.type;
+  document.getElementById('eUrl').value=c.url; document.getElementById('eImg').value=c.img&&!c.img.startsWith('data:')?c.img:'';
+  document.getElementById('ePw').value=c.password||''; document.getElementById('eTags').value=(c.tags||[]).join(', ');
+  document.getElementById('eDesc').value=c.description||'';
   if(c.img){document.getElementById('eImgPreviewImg').src=c.img;document.getElementById('eImgPreview').style.display='inline-block';}
-  else{document.getElementById('eImgPreview').style.display='none';}
+  else document.getElementById('eImgPreview').style.display='none';
   document.getElementById('editOv').classList.add('show');
 }
 function closeEdit(){document.getElementById('editOv').classList.remove('show');editId=null;editPendingImg='';}
-function saveEdit(){
-  const c=cards.find(x=>x.id===editId); if(!c)return;
-  const title=document.getElementById('eTitle').value.trim();
-  const url=document.getElementById('eUrl').value.trim();
-  if(!title||!url){toast('Title and URL are required','error');return}
-  c.title=title; c.type=document.getElementById('eType').value;
-  c.url=url; c.img=editPendingImg||'';
-  c.pw=document.getElementById('ePw').value.trim();
-  c.tags=document.getElementById('eTags').value.split(',').map(t=>t.trim()).filter(Boolean);
-  c.desc=document.getElementById('eDesc').value.trim();
-  save(); closeEdit();
+async function saveEdit() {
+  const c=cards.find(x=>x.id===editId); if(!c) return;
+  const title=document.getElementById('eTitle').value.trim(); const url=document.getElementById('eUrl').value.trim();
+  if(!title||!url){toast(t('toast_err_required'),'error');return;}
+  const updates={title,type:document.getElementById('eType').value,url,img:editPendingImg||'',password:document.getElementById('ePw').value.trim(),tags:document.getElementById('eTags').value.split(',').map(s=>s.trim()).filter(Boolean),description:document.getElementById('eDesc').value.trim()};
+  if(USE_SUPABASE){
+    try{await supabaseFetch(`entries?id=eq.${c.id}`,{method:'PATCH',body:JSON.stringify(updates)});}
+    catch(e){toast('Error: '+e.message,'error');return;}
+  }
+  Object.assign(c,updates); if(!USE_SUPABASE) save();
+  closeEdit();
   const cur=document.querySelector('.view.active').id.replace('view-','');
   if(cur==='overview')renderOverview(); else renderEntries();
-  toast('Entry updated','success');
+  toast(t('toast_updated'),'success');
 }
 
-/* DELETE */
-function openDel(id){const c=cards.find(x=>x.id===id);if(!c)return;delId=id;document.getElementById('delName').textContent=c.title;document.getElementById('delOv').classList.add('show');}
+// ── DELETE ──
+function openDel(id){const c=cards.find(x=>x.id===id);if(!c)return;delId=id;document.getElementById('delMsg').textContent=t('del_confirm').replace('{name}',c.title);document.getElementById('delOv').classList.add('show');}
 function closeDel(){document.getElementById('delOv').classList.remove('show');delId=null;}
-function confirmDel(){
-  cards=cards.filter(c=>c.id!==delId);
-  save();closeDel();
+async function confirmDel(){
+  if(USE_SUPABASE){try{await supabaseFetch(`entries?id=eq.${delId}`,{method:'DELETE'});}catch(e){toast('Error: '+e.message,'error');return;}}
+  cards=cards.filter(c=>c.id!==delId); if(!USE_SUPABASE) save();
+  closeDel();
   const cur=document.querySelector('.view.active').id.replace('view-','');
   if(cur==='overview')renderOverview(); else renderEntries();
-  updateSbCounts();toast('Entry deleted');
+  updateSbCounts(); toast(t('toast_deleted'));
 }
 
-/* SETTINGS */
+// ── SETTINGS ──
 function changePw(){
-  const cur=document.getElementById('curPw').value;
-  const n1=document.getElementById('newPw').value;
-  const n2=document.getElementById('newPw2').value;
-  if(cur!==adminPw){toast('Current password incorrect','error');return}
-  if(!n1){toast('Please enter new password','error');return}
-  if(n1!==n2){toast('Passwords do not match','error');return}
-  adminPw=n1;localStorage.setItem(ADMIN_KEY,adminPw);
+  const cur=document.getElementById('curPw').value; const n1=document.getElementById('newPw').value; const n2=document.getElementById('newPw2').value;
+  if(cur!==adminPw){toast(t('toast_err_pw_wrong'),'error');return;}
+  if(!n1){toast(t('toast_err_pw_empty'),'error');return;}
+  if(n1!==n2){toast(t('toast_err_pw_mismatch'),'error');return;}
+  adminPw=n1; localStorage.setItem(ADMIN_KEY,adminPw);
   ['curPw','newPw','newPw2'].forEach(id=>document.getElementById(id).value='');
-  toast('Password updated','success');
+  toast(t('toast_pw_updated'),'success');
 }
 function exportData(){
   const blob=new Blob([JSON.stringify({cards,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='eric-tech-backup.json';a.click();
-  toast('Exported','success');
+  toast(t('toast_exported'),'success');
 }
 function clearData(){
-  if(!confirm('確定要清除所有 Entries？'))return;
-  cards=[];save();renderOverview();updateSbCounts();toast('Cleared');
+  if(!confirm(lang==='zh'?'確定要清除所有項目？':'Clear all entries? This cannot be undone.'))return;
+  cards=[];if(!USE_SUPABASE)save();renderOverview();updateSbCounts();toast(t('toast_cleared'));
 }
 
-/* TOAST */
+// ── TOAST ──
 let toastTimer;
 function toast(msg,type=''){
-  const el=document.getElementById('toast');
-  el.textContent=msg;el.className='toast '+(type||'');
-  requestAnimationFrame(()=>el.classList.add('show'));
-  clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2800);
+  const el=document.getElementById('toast'); el.textContent=msg; el.className='toast '+(type||'');
+  requestAnimationFrame(()=>el.classList.add('show')); clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove('show'),2800);
 }
 
-['editOv','delOv'].forEach(id=>{document.getElementById(id).addEventListener('click',e=>{if(e.target.id===id)document.getElementById(id).classList.remove('show')})});
+['editOv','delOv'].forEach(id=>{document.getElementById(id).addEventListener('click',e=>{if(e.target.id===id)document.getElementById(id).classList.remove('show')});});
 
-function initApp(){updateSbCounts();renderOverview();}
+async function initApp(){ await loadCards(); updateSbCounts(); renderOverview(); }
+
+// ── INIT ──
+applyI18n();
 </script>
 </body>
 </html>
