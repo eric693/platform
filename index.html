@@ -15,30 +15,21 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--txt);font-family:'Noto Sans TC','Inter',sans-serif;min-height:100vh}
-
-/* NAV */
 nav{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:'Inter',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.06em;color:var(--txt);text-transform:uppercase;display:flex;align-items:center;gap:8px}
 .logo-dot{width:6px;height:6px;background:var(--acc);border-radius:50%;flex-shrink:0}
 .nav-right{display:flex;align-items:center;gap:8px}
-
-/* LANG SWITCHER */
 .lang-switcher{display:flex;align-items:center;background:var(--bg);border:1px solid var(--border-d);border-radius:7px;overflow:hidden}
 .lang-btn{font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;padding:6px 12px;background:transparent;border:none;color:var(--txt2);cursor:pointer;transition:all .15s;letter-spacing:.02em}
 .lang-btn.active{background:var(--acc);color:#fff}
 .lang-btn:hover:not(.active){color:var(--txt)}
-
 .btn-admin{font-family:'Inter',sans-serif;font-size:.7rem;color:var(--txt2);border:1px solid var(--border-d);background:transparent;padding:7px 16px;border-radius:7px;cursor:pointer;letter-spacing:.03em;transition:all .18s}
 .btn-admin:hover{border-color:var(--acc);color:var(--acc)}
-
-/* PAGE HEADER */
 .page-header{background:var(--surface);border-bottom:1px solid var(--border)}
 .page-header-inner{max-width:1200px;margin:0 auto;padding:32px 40px 26px}
 .page-title{font-family:'Inter',sans-serif;font-weight:700;font-size:1.6rem;color:var(--txt);letter-spacing:-.02em}
 .page-sub{margin-top:5px;font-size:.85rem;color:var(--txt2);font-weight:400}
-
-/* FILTER */
 .filter-wrap{background:var(--surface);border-bottom:1px solid var(--border)}
 .filter-inner{max-width:1200px;margin:0 auto;padding:0 40px;display:flex;align-items:center}
 .ftab{font-family:'Inter',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.03em;padding:13px 18px;background:transparent;border:none;color:var(--txt2);cursor:pointer;transition:color .18s;position:relative;white-space:nowrap}
@@ -47,17 +38,11 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .ftab.active::after{transform:scaleX(1)}
 .ftab:hover{color:var(--txt)}
 .ftab-count{font-size:.6rem;background:var(--acc-dim);border:1px solid var(--acc-border);color:var(--acc);padding:1px 6px;border-radius:4px;margin-left:4px;vertical-align:middle}
-
-/* GRID */
 .grid-wrap{max-width:1200px;margin:0 auto;padding:24px 40px 80px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-
-/* LOADING */
 .loading{grid-column:1/-1;padding:60px 20px;text-align:center;font-size:.82rem;color:var(--txt2)}
 .spinner{width:24px;height:24px;border:2px solid var(--border-d);border-top-color:var(--acc);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* CARD */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:box-shadow .22s,transform .22s,border-color .22s}
 .card:hover{border-color:var(--acc-border);box-shadow:0 8px 32px rgba(45,106,79,.1);transform:translateY(-2px)}
 .card-img{width:100%;aspect-ratio:16/9;overflow:hidden;position:relative;background:var(--bg)}
@@ -79,17 +64,12 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .tag{font-family:'Inter',sans-serif;font-size:.58rem;color:var(--txt2);border:1px solid var(--border-d);padding:2px 7px;border-radius:4px;letter-spacing:.03em}
 .card-price{font-family:'Inter',sans-serif;font-size:.82rem;font-weight:700;color:var(--acc);letter-spacing:-.01em;margin-bottom:10px}
 .card-price-free{color:var(--txt2);font-weight:500}
-.card-price-free::after{content:attr(data-free)}
 .card-cta{font-family:'Inter',sans-serif;font-size:.68rem;font-weight:500;color:var(--txt2);transition:all .2s;white-space:nowrap;flex-shrink:0}
 .card:hover .card-cta{color:var(--acc);transform:translateX(3px)}
 .empty{grid-column:1/-1;padding:80px 20px;text-align:center;font-size:.82rem;color:var(--txt2)}
-
-/* OVERLAY */
 .overlay{display:none;position:fixed;inset:0;background:rgba(10,20,12,.45);backdrop-filter:blur(6px);z-index:1000;align-items:center;justify-content:center;padding:20px}
 .overlay.show{display:flex}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-
-/* PW MODAL */
 .pw-modal{background:var(--surface);border:1px solid var(--border);border-radius:14px;width:100%;max-width:420px;overflow:hidden;animation:fadeUp .2s ease;position:relative;box-shadow:0 20px 60px rgba(10,20,12,.12)}
 .pw-modal-head{padding:24px 26px 20px;border-bottom:1px solid var(--border)}
 .pw-eyebrow{font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;color:var(--acc);letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}
@@ -104,7 +84,6 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .pw-submit:hover{background:var(--acc-h)}
 .pw-close{position:absolute;top:14px;right:14px;background:transparent;border:1px solid var(--border);color:var(--txt2);font-family:'Inter',sans-serif;font-size:.62rem;cursor:pointer;padding:5px 10px;border-radius:5px;transition:all .18s}
 .pw-close:hover{border-color:var(--border-d);color:var(--txt)}
-
 @media(max-width:760px){
   .nav-inner,.page-header-inner,.filter-inner,.grid-wrap{padding-left:18px;padding-right:18px}
   .grid{grid-template-columns:1fr}
@@ -123,241 +102,210 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
         <button class="lang-btn active" onclick="setLang('zh',this)">中文</button>
         <button class="lang-btn" onclick="setLang('en',this)">EN</button>
       </div>
-      <button class="btn-admin" onclick="location.href='admin.html'" data-i18n="nav_admin">Admin</button>
+      <button class="btn-admin" onclick="location.href='admin.html'">Admin</button>
     </div>
   </div>
 </nav>
 
 <div class="page-header">
   <div class="page-header-inner">
-    <div class="page-title" data-i18n="page_title">Products &amp; Courses</div>
-    <div class="page-sub" data-i18n="page_sub">點選卡片即可前往，部分內容需要密碼驗證解鎖。</div>
+    <div class="page-title" id="pageTitle">產品 &amp; 課程</div>
+    <div class="page-sub" id="pageSub">點選卡片即可前往，部分內容需要密碼驗證解鎖。</div>
   </div>
 </div>
 
 <div class="filter-wrap">
   <div class="filter-inner">
-    <button class="ftab active" onclick="doFilter('all',this)" data-i18n="tab_all">All <span class="ftab-count" id="cA">0</span></button>
-    <button class="ftab" onclick="doFilter('product',this)" data-i18n="tab_products">Products <span class="ftab-count" id="cP">0</span></button>
-    <button class="ftab" onclick="doFilter('course',this)" data-i18n="tab_courses">Courses <span class="ftab-count" id="cC">0</span></button>
+    <button class="ftab active" onclick="doFilter('all',this)">
+      <span id="tabAllLabel">全部</span> <span class="ftab-count" id="cA">0</span>
+    </button>
+    <button class="ftab" onclick="doFilter('product',this)">
+      <span id="tabProductLabel">產品</span> <span class="ftab-count" id="cP">0</span>
+    </button>
+    <button class="ftab" onclick="doFilter('course',this)">
+      <span id="tabCourseLabel">課程</span> <span class="ftab-count" id="cC">0</span>
+    </button>
   </div>
 </div>
 
 <div class="grid-wrap">
   <div class="grid" id="grid">
-    <div class="loading"><div class="spinner"></div>Loading...</div>
+    <div class="loading"><div class="spinner"></div><span id="loadingText">載入中...</span></div>
   </div>
 </div>
 
 <div class="overlay" id="pwOv">
   <div class="pw-modal">
-    <button class="pw-close" onclick="closePw()" data-i18n="btn_close">Close</button>
+    <button class="pw-close" onclick="closePw()" id="btnClose">關閉</button>
     <div class="pw-modal-head">
-      <div class="pw-eyebrow" data-i18n="pw_eyebrow">Access Required</div>
+      <div class="pw-eyebrow" id="pwEyebrow">存取驗證</div>
       <div class="pw-title" id="pwT">Protected Content</div>
     </div>
     <div class="pw-modal-body">
       <p class="pw-sub" id="pwS"></p>
       <input class="pw-input" type="password" id="pwI" onkeydown="if(event.key==='Enter')go()"/>
-      <div class="pw-err" id="pwE" data-i18n="pw_error">密碼錯誤，請重新輸入</div>
-      <button class="pw-submit" onclick="go()" data-i18n="pw_submit">Unlock &amp; Continue</button>
+      <div class="pw-err" id="pwE">密碼錯誤，請重新輸入</div>
+      <button class="pw-submit" onclick="go()" id="btnUnlock">解鎖並前往</button>
     </div>
   </div>
 </div>
 
-<script>
-// ── SUPABASE CONFIG ──
-const SUPABASE_URL = 'https://teudhyeegtbnprtdqkkd.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRldWRoeWVlZ3RibnBydGRxa2tkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxNzk5MTgsImV4cCI6MjA4Nzc1NTkxOH0.4J8u4MuxZqMT2pPDsrIl6eXIbHE1V9Dzk_-DPowAGM8';
-const USE_SUPABASE = SUPABASE_URL !== 'YOUR_SUPABASE_URL';
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyApLuueHCGnx5uVU3CVrCKWb9tYdc0gTPg",
+  authDomain: "project-84639.firebaseapp.com",
+  projectId: "project-84639",
+  storageBucket: "project-84639.firebasestorage.app",
+  messagingSenderId: "1079992032050",
+  appId: "1:1079992032050:web:7229f94d16abfddaf7552b",
+  measurementId: "G-JX5DX6S0JV"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 // ── I18N ──
 const i18n = {
   zh: {
-    nav_admin: 'Admin',
-    page_title: '產品 &amp; 課程',
-    page_sub: '點選卡片即可前往，部分內容需要密碼驗證解鎖。',
-    tab_all: '全部',
-    tab_products: '產品',
-    tab_courses: '課程',
-    btn_close: '關閉',
-    pw_eyebrow: '存取驗證',
-    pw_error: '密碼錯誤，請重新輸入',
-    pw_submit: '解鎖並前往',
-    pw_placeholder: '請輸入密碼',
-    pw_sub_product: '此產品受密碼保護，請輸入專屬密碼以繼續前往。',
-    pw_sub_course:  '此課程受密碼保護，請輸入專屬密碼以繼續前往。',
-    badge_product: 'Product',
-    badge_course: 'Course',
-    badge_locked: '已鎖定',
-    card_cta: '前往 →',
-    empty: '目前沒有內容，請稍後再試。',
-    loading: '載入中...',
+    pageTitle:'產品 &amp; 課程', pageSub:'點選卡片即可前往，部分內容需要密碼驗證解鎖。',
+    tabAll:'全部', tabProduct:'產品', tabCourse:'課程',
+    btnClose:'關閉', pwEyebrow:'存取驗證', btnUnlock:'解鎖並前往',
+    pwErr:'密碼錯誤，請重新輸入', pwPlaceholder:'請輸入密碼',
+    pwSubProduct:'此產品受密碼保護，請輸入專屬密碼以繼續前往。',
+    pwSubCourse:'此課程受密碼保護，請輸入專屬密碼以繼續前往。',
+    badgeLocked:'已鎖定', cardCta:'前往 →',
+    empty:'目前沒有內容，請稍後再試。', loading:'載入中...',
+    free:'免費',
   },
   en: {
-    nav_admin: 'Admin',
-    page_title: 'Products &amp; Courses',
-    page_sub: 'Click any card to visit. Some content requires a password to unlock.',
-    tab_all: 'All',
-    tab_products: 'Products',
-    tab_courses: 'Courses',
-    btn_close: 'Close',
-    pw_eyebrow: 'Access Required',
-    pw_error: 'Incorrect password. Please try again.',
-    pw_submit: 'Unlock &amp; Continue',
-    pw_placeholder: 'Enter password',
-    pw_sub_product: 'This product is password protected. Enter the access password to continue.',
-    pw_sub_course:  'This course is password protected. Enter the access password to continue.',
-    badge_product: 'Product',
-    badge_course: 'Course',
-    badge_locked: 'Locked',
-    card_cta: 'View →',
-    empty: 'No entries found. Please check back later.',
-    loading: 'Loading...',
+    pageTitle:'Products &amp; Courses', pageSub:'Click any card to visit. Some content requires a password to unlock.',
+    tabAll:'All', tabProduct:'Products', tabCourse:'Courses',
+    btnClose:'Close', pwEyebrow:'Access Required', btnUnlock:'Unlock &amp; Continue',
+    pwErr:'Incorrect password. Please try again.', pwPlaceholder:'Enter password',
+    pwSubProduct:'This product is password protected. Enter the access password to continue.',
+    pwSubCourse:'This course is password protected. Enter the access password to continue.',
+    badgeLocked:'Locked', cardCta:'View →',
+    empty:'No entries found. Please check back later.', loading:'Loading...',
+    free:'Free',
   }
 };
 
 let lang = localStorage.getItem('et_lang') || 'zh';
+const t = k => i18n[lang][k] || i18n.en[k] || k;
 
-function setLang(l, btn) {
+window.setLang = function(l, btn) {
   lang = l;
   localStorage.setItem('et_lang', l);
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.documentElement.lang = l === 'zh' ? 'zh-TW' : 'en';
   applyI18n();
   render();
-}
-
-function t(key) { return i18n[lang][key] || i18n['en'][key] || key; }
+};
 
 function applyI18n() {
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    const val = t(key);
-    // preserve count spans inside tabs
-    const countSpan = el.querySelector('.ftab-count');
-    if (countSpan) {
-      el.innerHTML = val + ' ' + countSpan.outerHTML;
-    } else {
-      el.innerHTML = val;
-    }
+  document.getElementById('pageTitle').innerHTML = t('pageTitle');
+  document.getElementById('pageSub').textContent = t('pageSub');
+  document.getElementById('tabAllLabel').textContent = t('tabAll');
+  document.getElementById('tabProductLabel').textContent = t('tabProduct');
+  document.getElementById('tabCourseLabel').textContent = t('tabCourse');
+  document.getElementById('btnClose').textContent = t('btnClose');
+  document.getElementById('pwEyebrow').textContent = t('pwEyebrow');
+  document.getElementById('btnUnlock').innerHTML = t('btnUnlock');
+  document.getElementById('pwE').textContent = t('pwErr');
+  document.getElementById('pwI').placeholder = t('pwPlaceholder');
+  document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+  // sync lang buttons
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim() === (lang === 'zh' ? '中文' : 'EN'));
   });
-  const pwI = document.getElementById('pwI');
-  if (pwI) pwI.placeholder = t('pw_placeholder');
 }
 
 // ── DATA ──
-const CARDS_KEY = 'et_cards';
-const DEFAULT_CARDS = [
-  {id:1,title:'座位預訂系統',type:'product',url:'https://seat-booking-rlf2.onrender.com',img:'',description:'即時座位管理與線上預訂平台，支援多場地配置與即時同步。',tags:['Node.js','Express','WebSocket'],price:'',currency:'TWD',password:'demo123'},
-  {id:2,title:'Aura App',type:'product',url:'https://aura-v0q3.onrender.com',img:'',description:'智慧氛圍感知應用，打造沉浸式互動體驗。',tags:['React','AI','UX'],price:'',currency:'TWD',password:''},
-  {id:3,title:'Prompt 工程課程',type:'course',url:'https://eric693.github.io/prompt_course/',img:'',description:'從零開始學習 AI Prompt 工程，掌握 ChatGPT 與 Claude 的核心技巧。',tags:['AI','ChatGPT','Claude'],price:'',currency:'TWD',password:'course2024'}
-];
-
 let cards = [], cur = 'all', pending = null;
 
-// ── SUPABASE ──
-async function loadFromSupabase() {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/entries?select=*&order=created_at.asc`, {
-    headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
-  });
-  if (!res.ok) throw new Error('Supabase fetch failed');
-  const data = await res.json();
-  return data.map(r => ({
-    id: r.id, title: r.title, type: r.type, url: r.url,
-    img: r.img || '', description: r.description || '',
-    tags: r.tags || [], password: r.password || '', price: r.price || '', currency: r.currency || 'TWD'
-  }));
-}
-
-async function initData() {
-  if (USE_SUPABASE) {
+async function loadCards() {
+  try {
+    const q = query(collection(db, 'entries'), orderBy('createdAt', 'asc'));
+    const snap = await getDocs(q);
+    cards = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  } catch(e) {
+    // if no createdAt index yet, fallback without order
     try {
-      cards = await loadFromSupabase();
-    } catch(e) {
-      console.warn('Supabase failed, using localStorage', e);
-      cards = JSON.parse(localStorage.getItem(CARDS_KEY) || 'null') || DEFAULT_CARDS;
+      const snap = await getDocs(collection(db, 'entries'));
+      cards = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    } catch(e2) {
+      console.error('Firestore error:', e2);
+      cards = [];
     }
-  } else {
-    cards = JSON.parse(localStorage.getItem(CARDS_KEY) || 'null') || DEFAULT_CARDS;
   }
-  // normalize: support both 'pw' (old) and 'password' (new) field
-  cards = cards.map(c => ({ ...c, password: c.password ?? c.pw ?? '', price: c.price ?? '', currency: c.currency ?? 'TWD' }));
   render();
 }
 
 // ── RENDER ──
-function priceSymbol(cur) {
-  if (cur === 'TWD') return 'NT$';
-  if (cur === 'USD') return 'US$';
-  if (cur === 'JPY') return '¥';
-  return cur + ' ';
-}
+function initials(s) { return s.split(/[\s\-_]+/).map(w=>w[0]||'').join('').toUpperCase().slice(0,3); }
+
 function priceHtml(c) {
   if (!c.price || c.currency === 'FREE') {
-    return '<div class="card-price card-price-free">' + (lang === 'zh' ? '免費' : 'Free') + '</div>';
+    return `<div class="card-price card-price-free">${t('free')}</div>`;
   }
-  return '<div class="card-price">' + priceSymbol(c.currency) + Number(c.price).toLocaleString() + '</div>';
+  const sym = c.currency === 'TWD' ? 'NT$' : c.currency === 'USD' ? 'US$' : c.currency === 'JPY' ? '¥' : c.currency + ' ';
+  return `<div class="card-price">${sym}${Number(c.price).toLocaleString()}</div>`;
 }
 
-function initials(t) { return t.split(/[\s\-_]+/).map(w=>w[0]||'').join('').toUpperCase().slice(0,3); }
-
 function updateCounts() {
-  const p  = cards.filter(c => c.type === 'product').length;
-  const co = cards.filter(c => c.type === 'course').length;
   document.getElementById('cA').textContent = cards.length;
-  document.getElementById('cP').textContent = p;
-  document.getElementById('cC').textContent = co;
+  document.getElementById('cP').textContent = cards.filter(c=>c.type==='product').length;
+  document.getElementById('cC').textContent = cards.filter(c=>c.type==='course').length;
 }
 
 function render() {
   updateCounts();
   const list = cur === 'all' ? cards : cards.filter(c => c.type === cur);
   const g = document.getElementById('grid');
-  if (!list.length) {
-    g.innerHTML = `<div class="empty">${t('empty')}</div>`;
-    return;
-  }
+  if (!list.length) { g.innerHTML = `<div class="empty">${t('empty')}</div>`; return; }
   g.innerHTML = list.map((c, i) => `
-    <div class="card" onclick="clickCard(${c.id})">
+    <div class="card" onclick="clickCard('${c.id}')">
       <div class="card-img">
         ${c.img ? `<img src="${c.img}" alt="${c.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
         <div class="card-placeholder" style="${c.img ? 'display:none' : ''}">
           <div class="card-initials">${initials(c.title)}</div>
         </div>
-        ${c.password ? `<div class="card-lock-badge">${t('badge_locked')}</div>` : ''}
+        ${c.password ? `<div class="card-lock-badge">${t('badgeLocked')}</div>` : ''}
       </div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="badge badge-${c.type}">${c.type === 'course' ? t('badge_course') : t('badge_product')}</span>
+          <span class="badge badge-${c.type}">${c.type === 'course' ? (lang==='zh'?'課程':'Course') : (lang==='zh'?'產品':'Product')}</span>
           <span class="card-idx">${String(i+1).padStart(2,'0')}</span>
         </div>
         <div class="card-title">${c.title}</div>
         ${c.description ? `<div class="card-desc">${c.description}</div>` : ''}
-        ${(c.price && c.currency !== 'FREE') ? `<div class="card-price">${c.currency === 'TWD' ? 'NT\$' : c.currency === 'USD' ? 'US\$' : c.currency + ' '}${Number(c.price).toLocaleString()}</div>` : (c.currency === 'FREE' || !c.price) ? `<div class="card-price card-price-free" data-i18n-free="1"></div>` : ''}
+        ${priceHtml(c)}
         <div class="card-foot">
           <div class="tags">${(c.tags||[]).map(tag=>`<span class="tag">${tag}</span>`).join('')}</div>
-          <span class="card-cta">${t('card_cta')}</span>
+          <span class="card-cta">${t('cardCta')}</span>
         </div>
       </div>
     </div>`).join('');
 }
 
-function doFilter(type, btn) {
+window.doFilter = function(type, btn) {
   cur = type;
   document.querySelectorAll('.ftab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   render();
-}
+};
 
-function clickCard(id) {
+window.clickCard = function(id) {
   const c = cards.find(x => x.id === id);
   if (!c) return;
   if (c.password) {
     pending = c;
     document.getElementById('pwT').textContent = c.title;
-    document.getElementById('pwS').textContent = c.type === 'course' ? t('pw_sub_course') : t('pw_sub_product');
+    document.getElementById('pwS').textContent = c.type === 'course' ? t('pwSubCourse') : t('pwSubProduct');
     document.getElementById('pwI').value = '';
     document.getElementById('pwI').classList.remove('err');
     document.getElementById('pwE').style.display = 'none';
@@ -366,10 +314,11 @@ function clickCard(id) {
   } else {
     window.open(c.url, '_blank');
   }
-}
+};
 
-function closePw() { document.getElementById('pwOv').classList.remove('show'); pending = null; }
-function go() {
+window.closePw = function() { document.getElementById('pwOv').classList.remove('show'); pending = null; };
+
+window.go = function() {
   const v = document.getElementById('pwI').value;
   if (v === pending?.password) {
     const url = pending.url;
@@ -383,31 +332,13 @@ function go() {
     document.getElementById('pwI').focus();
     document.getElementById('pwI').select();
   }
-}
+};
 
 document.getElementById('pwOv').addEventListener('click', e => { if (e.target.id === 'pwOv') closePw(); });
 
-// sync localStorage changes from admin (non-supabase)
-window.addEventListener('storage', e => {
-  if (!USE_SUPABASE && e.key === CARDS_KEY) {
-    cards = JSON.parse(localStorage.getItem(CARDS_KEY) || 'null') || DEFAULT_CARDS;
-    cards = cards.map(c => ({ ...c, password: c.password ?? c.pw ?? '', price: c.price ?? '', currency: c.currency ?? 'TWD' }));
-    render();
-  }
-});
-
-// init lang from saved preference
-(function() {
-  const saved = localStorage.getItem('et_lang') || 'zh';
-  lang = saved;
-  document.querySelectorAll('.lang-btn').forEach(b => {
-    b.classList.toggle('active', b.textContent.trim() === (saved === 'zh' ? '中文' : 'EN'));
-  });
-  document.documentElement.lang = saved === 'zh' ? 'zh-TW' : 'en';
-})();
-
+// init
 applyI18n();
-initData();
+loadCards();
 </script>
 </body>
 </html>
